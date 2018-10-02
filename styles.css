@@ -2,7 +2,7 @@
   width: 100px;
   height: 100px;
   background-color: red;
-  animation-name: "rotating";
+  animation-name: rotating;
   animation-duration: 4s;
 }
 
