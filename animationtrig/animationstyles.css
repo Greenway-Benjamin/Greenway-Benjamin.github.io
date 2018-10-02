@@ -1,3 +1,10 @@
+.holder {
+  position:relative;
+  height: 300px;
+  width: 200px;
+  float: left;
+}
+
 .box {
   width: 100px;
   height: 100px;
