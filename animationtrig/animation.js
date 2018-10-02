@@ -1,6 +1,6 @@
 function toggleAnimations(boxbutton, box) {
 
-  if(this.innerHTML == 'Play') {
+  if(boxbutton.innerHTML == 'Play') {
     boxbutton.innerHTML = 'Pause';
     box.style.animationPlayState = 'running';
   } else {
