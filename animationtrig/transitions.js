@@ -12,8 +12,11 @@ for (var i = 0; i < frowneys.length; i++) {
   }
 
   function changeBack() {   
-     this.innerHTML = ':(';
-     this.classList.remove('smiley1');
-     this.classList.remove('smiley2');
-     this.classList.remove('smiley3');
+    var changing = this;
+    setTimeout(function(){
+     changing.innerHTML = ':(';
+     changing.classList.remove('smiley1');
+     changing.classList.remove('smiley2');
+     changing.classList.remove('smiley3');
+    }, 5000);
   }
