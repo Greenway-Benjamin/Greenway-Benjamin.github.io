@@ -1,7 +1,7 @@
 var frowneys = document.getElementsByClassName('frowneysmiley');
 
 for (i in frowneys) {
-  frowneys[i].addEventListener("mouseover", changeToSmiley());
+  frowneys[i].addEventListener("mouseover", changeToSmiley);
 }
 
 function changeToSmiley() {
