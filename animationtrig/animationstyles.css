@@ -24,6 +24,7 @@
 button {
   color: red;
   position: absolute;
+  justify-content: center;
   bottom: 0;
 }
 
