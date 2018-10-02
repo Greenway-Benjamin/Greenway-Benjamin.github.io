@@ -8,7 +8,7 @@ var tester = document.getElementById('tester');
 test.addEventListener("mouseover", testsmiley);
 
 function testsmiley() {
-  document.getElementById('tester').innerHTML = ':)';
+  this.innerHTML = ':)';
 }
 
 function changeToSmiley(frowney) {
