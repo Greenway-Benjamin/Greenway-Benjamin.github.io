@@ -1,5 +1,5 @@
 var frowneys = document.getElementsByClassName('frowneysmiley');
-var happyCount;
+var happyCount = 0;
 
 for (var i = 0; i < frowneys.length; i++) {
   frowneys[i].addEventListener("mouseover", changeToSmiley);
@@ -10,7 +10,7 @@ for (var i = 0; i < frowneys.length; i++) {
     var newclass = 'smiley' + anum;
     this.innerHTML = ':)';
     this.classList.add(newclass);
-    happyCount++;
+    happyCount = happyCount + 1;
     document.getElementById('smilecount').innerHTML = happyCount;
   }
 
