@@ -3,6 +3,7 @@
   height: 100px;
   background-color: red;
   animation-name: "rotating";
+  animation-duration: 4s;
 }
 
 @keyframes rotating {
