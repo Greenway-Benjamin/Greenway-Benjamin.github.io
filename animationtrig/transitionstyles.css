@@ -1,3 +1,5 @@
 .frowneysmiley {
   font-size: 20pt;
+  position: relative;
+  float: left;
 }
