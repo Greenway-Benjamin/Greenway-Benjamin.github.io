@@ -1,6 +1,5 @@
-var box = document.getElementById('box1');
-
-document.getElementById('box1button').onclick = function() {
+toggleAnimations(box) = function() {
+  box = document.getElementById(box);
   if(this.innerHTML == 'Play') {
     this.innerHTML = 'Pause';
     box.style.animationPlayState = 'running';
