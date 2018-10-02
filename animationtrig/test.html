@@ -19,7 +19,7 @@
 var frowneys = document.getElementsByClassName('frowneysmiley');
 for (var i = 0; i < frowneys.length; i++) { 
 frowneys[i].addEventListener("mouseover", changeToSmiley);
-frowneys[i].addEventListener("mouseout", setTimeOut(changeBack, 5000);  
+frowneys[i].addEventListener("mouseout", changeBack);  
 }
 function changeToSmiley() {  
 var anum = Math.floor(Math.random() * 3) + 1;
@@ -28,7 +28,7 @@ this.innerHTML = ':)';
   this.classList.add(newclass); 
 }
   
-  function changeBacker() {
+  function changeBack() {
     this.innerHTML = ':(';
     this.classList.remove('smiley1');
     this.classList.remove('smiley2');
