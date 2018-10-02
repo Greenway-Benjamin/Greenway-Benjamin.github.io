@@ -16,6 +16,5 @@ for (var i = 0; i < frowneys.length; i++) {
       this.innerHTML = ':(';
       this.classList.remove('smiley1');
       this.classList.remove('smiley2');
-      this.classList.remove('smiley3'); 
-      alert('Alert!'); }, 5000);
+      this.classList.remove('smiley3'); }, 5000);
   }
