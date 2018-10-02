@@ -5,4 +5,5 @@ for (var i = 0; i < frowneys.length; i++) {
   
   function changeToSmiley() {
     this.innerHTML = ':)';
+    this.classList.add('smiley');
   }
