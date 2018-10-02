@@ -19,7 +19,7 @@
 var frowneys = document.getElementsByClassName('frowneysmiley');
 for (var i = 0; i < frowneys.length; i++) { 
 frowneys[i].addEventListener("mouseover", changeToSmiley);
-frowneys[i].addEventListener("mouseout", setTimeout(changeBack, 5000));  
+frowneys[i].addEventListener("mouseout", function(){setTimeout(changeBack, 5000)});  
 }
 function changeToSmiley() {  
 var anum = Math.floor(Math.random() * 3) + 1;
