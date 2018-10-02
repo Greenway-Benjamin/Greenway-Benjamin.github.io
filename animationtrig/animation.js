@@ -7,6 +7,5 @@ function toggleAnimations(boxbutton, box) {
   } else {
     boxxbutton.innerHTML = 'Play';
     boxx.style.animationPlayState = 'paused';
-    boxx.classList.remove('boxanimation');
   }
 }
