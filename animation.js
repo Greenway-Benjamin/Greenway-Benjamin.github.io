@@ -7,10 +7,10 @@ document.getElementById('box1button').onclick = function() {
   } else {
     this.innerHTML = 'Play';
     var computedStyle = window.getComputedStyle(box);
-    var marginLeft = computedStyle.getPropertyValue('margin-left');
-    var marginTop = computedStyle.getPropertyValue('margin-top');
-    box.style.marginLeft = marginLeft;
-    box.style.marginTop = marginTop;
+    var marginLeft = computedStyle.getPropertyValue('left');
+    var marginTop = computedStyle.getPropertyValue('top');
+    box.style.left = marginLeft;
+    box.style.top = marginTop;
     box.classList.remove('boxanimation');
   }
 }
