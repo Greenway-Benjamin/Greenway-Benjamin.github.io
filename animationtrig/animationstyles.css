@@ -1,10 +1,9 @@
 .holder {
   position:relative;
-  height: 400px;
+  height: 3500px;
   width: 100px;
   padding-right: 200px;
   float: left;
-  border-style: solid;
 }
 
 .box {
@@ -26,7 +25,7 @@ button {
   color: red;
   position: absolute;
   bottom: 0;
-  left: 30;
+  left: 20;
 }
 
 @keyframes rotating {
