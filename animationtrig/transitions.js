@@ -6,12 +6,15 @@ for (var i = 0; i < frowneys.length; i++) {
   frowneys[i].addEventListener("mouseout", changeBack);
 }
   function changeToSmiley() {
+    var smiling = this.innerHTML;
     var anum = Math.floor(Math.random() * 3) + 1;  
     var newclass = 'smiley' + anum;
     this.innerHTML = ':)';
     this.classList.add(newclass);
+    if (smiling != ':)') {
     happyCount = happyCount + 1;
     document.getElementById('smilecount').innerHTML = happyCount;
+    }
   }
 
   function changeBack() {   
