@@ -1,8 +1,11 @@
-#box1 {
+.box {
   width: 100px;
   height: 100px;
   background-color: red;
   position: relative;
+}
+
+.box.boxanimation {
   animation-name: rotating;
   animation-duration: 4s;
   animation-iteration-count: infinite;
