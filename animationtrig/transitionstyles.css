@@ -13,4 +13,5 @@
 
 .frowneysmiley.smiley {
   background-color: green;
+  transition: 5s;
 }
