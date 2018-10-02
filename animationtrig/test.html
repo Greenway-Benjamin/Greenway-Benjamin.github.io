@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<Head>
+<link rel="stylesheet" href="transitionstyles.css">
+<Title>Transition Page</Title>
+</Head>
+<Body>
+<h1>The sad faces want to be happy!</h1>
+<div class="frowneysmiley">:(</div>
+<div class="frowneysmiley">>:(</div>
+<div class="frowneysmiley">:'(</div>
+<div class="frowneysmiley">:-(</div>
+<div class="frowneysmiley">>:-(</div>
+<div class="frowneysmiley">:'-(</div>
+</Body> 
+<Footer> 
+<script type="text/javascript"> 
+
+var frowneys = document.getElementsByClassName('frowneysmiley');
+for (var i = 0; i < frowneys.length; i++) { 
+frowneys[i].addEventListener("mouseover", changeToSmiley);
+}
+function changeToSmiley() {  
+this.innerHTML = ':)';  
+  this.classList.add('smiley'); 
+}
+
+</script>  </Footer></html>
