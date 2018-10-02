@@ -3,12 +3,14 @@ var box = document.getElementById('box1');
 document.getElementById('box1button').onclick = function() {
   if(this.innerHTML == 'Play') {
     this.innerHTML = 'Pause';
-    box1.classList.add('boxanimation');
+    box.classList.add('boxanimation');
   } else {
     this.innerHTML = 'Play';
     var computedStyle = window.getComputedStyle(box);
     var marginLeft = computedStyle.getPropertyValue('margin-left');
-    box1.style.marginLeft = marginLeft;
-    box1.classList.remove('boxanimation');
+    var marginTop = computedStyle.getPropertyValue('margin-top');
+    box.style.marginLeft = marginLeft;
+    box.style.marginTop = marginTop;
+    box.classList.remove('boxanimation');
   }
 }
