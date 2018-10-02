@@ -5,7 +5,7 @@ for (var i = 0; i < frowneys.length; i++) {
   frowneys[i].addEventListener("mouseout", changeBack);
 }
   function changeToSmiley() {
-    var anum = Math.floor(Math.random() * 3) + 1  
+    var anum = Math.floor(Math.random() * 3) + 1;  
     var newclass = 'smiley' + anum;
     this.innerHTML = ':)';
     this.classList.add(newclass);
@@ -13,10 +13,11 @@ for (var i = 0; i < frowneys.length; i++) {
 
   function changeBack() {   
     var changing = this;
+    var timing = (Math.floor(Math.random() * 10) + 1) * 1000;
     setTimeout(function(){
      changing.innerHTML = ':(';
      changing.classList.remove('smiley1');
      changing.classList.remove('smiley2');
      changing.classList.remove('smiley3');
-    }, 5000);
+    }, timing);
   }
