@@ -1,4 +1,4 @@
-toggleAnimations(box) = function() {
+toggleAnimations(box) {
   box = document.getElementById(box);
   if(this.innerHTML == 'Play') {
     this.innerHTML = 'Pause';
