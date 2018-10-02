@@ -1,11 +1,11 @@
 function toggleAnimations(box) {
-
+  var boxx = document.getElementById(box);
   if(this.innerHTML == 'Play') {
     this.innerHTML = 'Pause';
-    box.style.animationPlayState = 'running';
+    boxx.style.animationPlayState = 'running';
   } else {
     this.innerHTML = 'Play';
-    box.style.animationPlayState = 'paused';
-    box.classList.remove('boxanimation');
+    boxx.style.animationPlayState = 'paused';
+    boxx.classList.remove('boxanimation');
   }
 }
