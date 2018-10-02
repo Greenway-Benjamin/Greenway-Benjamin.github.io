@@ -4,6 +4,7 @@
   background-color: red;
   position: relative;
   margin: 25px;
+  float: left;
   animation-name: rotating;
   animation-duration: 4s;
   animation-iteration-count: infinite;
