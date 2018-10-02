@@ -20,10 +20,10 @@
     var tester = document.getElementById('tester');
       
   for (var i = 0; i < frowneys.length; i++) {
-        frowneys[i].addEventListener("mouseover", changeToSmiley());
+        frowneys[i].addEventListener("mouseover", changeToSmiley);
       }
       
-  tester.addEventListener("mouseover", testsmiley);
+  tester.addEventListener("mouseover", changeToSmiley);
   function testsmiley() {  
     this.innerHTML = ':)';
   }
