@@ -1,4 +1,4 @@
-var box1 = document.getElementById('box1');
+var box = document.getElementById('box1');
 
 document.getElementById('box1button').onclick = function() {
   if(this.innerHTML == 'Play') {
@@ -6,7 +6,7 @@ document.getElementById('box1button').onclick = function() {
     box1.classList.add('boxanimation');
   } else {
     this.innerHTML = 'Play';
-    var computedStyle = window.getComputedStyle(box1);
+    var computedStyle = window.getComputedStyle(box);
     var marginLeft = computedStyle.getPropertyValue('margin-left');
     box1.style.marginLeft = marginLeft;
     box1.classList.remove('boxanimation');
