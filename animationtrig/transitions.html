@@ -7,7 +7,7 @@
 </Head>
 <Body>
   <h1>The sad faces want to be happy!</h1>
-  <div id="tester" class="frowneysmiley">:(</div>
+  <div class="frowneysmiley">:(</div>
   <div class="frowneysmiley">>:(</div>
   <div class="frowneysmiley">:'(</div>
   <div class="frowneysmiley">:-(</div>
@@ -15,23 +15,7 @@
   <div class="frowneysmiley">:'-(</div>
 </Body>
   <Footer>
-    <script type="text/javascript">
-    var frowneys = document.getElementsByClassName('frowneysmiley');
-    var tester = document.getElementById('tester');
-      
-  for (var i = 0; i < frowneys.length; i++) {
-        frowneys[i].addEventListener("mouseover", changeToSmiley);
-      }
-      
-  tester.addEventListener("mouseover", changeToSmiley);
-  function testsmiley() {  
-    this.innerHTML = ':)';
-  }
-      
-  function changeToSmiley() {  
-    this.innerHTML= ':)';
-  }
-      
+    <script type="text/javascript" src="transitions.js">          
     </script>
   </Footer>
 </html>
