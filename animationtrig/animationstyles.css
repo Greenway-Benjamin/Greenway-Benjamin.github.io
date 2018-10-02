@@ -14,7 +14,7 @@
   animation-play-state: paused;
 }
 
-.boxbutton {
+.button {
   position:absolute;
   bottom: 0;
 }
