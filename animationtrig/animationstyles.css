@@ -3,6 +3,7 @@
   height: 100px;
   background-color: red;
   position: relative;
+  border-bottom: 200px;
   margin: 25px;
   float: left;
   animation-name: rotating;
@@ -11,6 +12,11 @@
   animation-direction: alternate;
   animation-timing-function: linear;
   animation-play-state: paused;
+}
+
+.box.boxbutton {
+  position:absolute;
+  bottom: 0;
 }
 
 @keyframes rotating {
