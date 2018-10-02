@@ -2,7 +2,7 @@
   position:relative;
   height: 400px;
   width: 100px;
-  margin-right: 100px;
+  border-right: 200px;
   float: left;
   border-style: solid;
 }
