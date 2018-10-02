@@ -1,16 +1,8 @@
 var frowneys = document.getElementsByClassName('frowneysmiley');
-var tester = document.getElementById('tester');
 
-//for (i in frowneys) {
-//  frowneys[i].addEventListener("mouseover", changeToSmiley(this));
-//}
-
-test.addEventListener("mouseover", testsmiley);
-
-function testsmiley() {
-  this.innerHTML = ':)';
-}
-
-function changeToSmiley(frowney) {
-  frowney.innerHTML= ':)';
-}
+for (var i = 0; i < frowneys.length; i++) {
+  frowneys[i].addEventListener("mouseover", changeToSmiley);
+  
+  function changeToSmiley() {
+    this.innerHTML = ':)';
+  }
