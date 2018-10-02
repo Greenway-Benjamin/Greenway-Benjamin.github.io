@@ -1,4 +1,4 @@
-var box1 = getElementById('box1');
+var box1 = document.getElementById('box1');
 
 document.getElementById('box1button')
 onclick = function() {
