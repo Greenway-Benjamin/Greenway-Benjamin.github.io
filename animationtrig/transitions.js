@@ -12,7 +12,8 @@ for (var i = 0; i < frowneys.length; i++) {
   }
 
   function changeBack() {
-    setTimeOut(this.innerHTML = ':(';, 5000);
+    //setTimeOut(this.innerHTML = ':(';, 5000);
+    this.innerHTML = ':(';
     this.classList.remove('smiley1');
     this.classList.remove('smiley2');
     this.classList.remove('smiley3');
