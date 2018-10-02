@@ -15,6 +15,23 @@
   <div class="frowneysmiley">:'-(</div>
 </Body>
   <Footer>
-    <script type="text/javascript" src="transitions.js"></script>
+    <script type="text/javascript">
+    var frowneys = document.getElementsByClassName('frowneysmiley');
+    var tester = document.getElementById('tester');
+      
+  //for (i in frowneys) {
+      //  frowneys[i].addEventListener("mouseover", changeToSmiley(this));
+      //}
+      
+  test.addEventListener("mouseover", testsmiley);
+  function testsmiley() {  
+    this.innerHTML = ':)';
+  }
+      
+  function changeToSmiley(frowney) {  
+    frowney.innerHTML= ':)';
+  }
+      
+    </script>
   </Footer>
 </html>
