@@ -1,8 +1,4 @@
-body {
-  background-color: gray;
-}
-
-div box1 {
+#box1 {
   width: 100px;
   height: 100px;
   background-color: red;
