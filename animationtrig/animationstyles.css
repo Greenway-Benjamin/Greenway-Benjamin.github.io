@@ -22,7 +22,8 @@
 }
 
 .button {
-  vertical-align: bottom; 
+  position: relative;
+  vertical-align: bottom;
 }
 
 @keyframes rotating {
