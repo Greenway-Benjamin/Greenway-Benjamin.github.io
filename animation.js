@@ -1,7 +1,6 @@
 var box1 = document.getElementById('box1');
 
-document.getElementById('box1button')
-onclick = function() {
+document.getElementById('box1button').onclick = function() {
   if(this.innerHTML == 'Play') {
     this.innerHTML = 'Pause';
     box1.classList.add('boxanimation');
