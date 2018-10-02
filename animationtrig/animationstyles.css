@@ -13,10 +13,6 @@
   animation-play-state: paused;
 }
 
-#box1 {
-
-}
-
 @keyframes rotating {
   0% {background-color: red; left: 0px; top: 0px; transform: rotate(0deg); transform-origin: bottom right;}
   25% {background-color: blue; left: 25px; top: 0px; transform: rotate(90deg); transform-origin: bottom right;}
