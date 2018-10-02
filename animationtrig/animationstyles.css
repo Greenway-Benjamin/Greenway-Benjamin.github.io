@@ -21,7 +21,7 @@
   animation-play-state: paused;
 }
 
-.button {
+button {
   color: red;
   position: relative;
   bottom: 0;
