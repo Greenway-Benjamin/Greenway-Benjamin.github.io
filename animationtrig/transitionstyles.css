@@ -2,4 +2,8 @@
   font-size: 20pt;
   position: relative;
   float: left;
+  color: white;
+  background-color: black;
+  height: 50px;
+  width: 50px;
 }
