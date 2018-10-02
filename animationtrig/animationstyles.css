@@ -23,7 +23,7 @@
 
 button {
   color: red;
-  position: relative;
+  position: absolute;
   bottom: 0;
 }
 
