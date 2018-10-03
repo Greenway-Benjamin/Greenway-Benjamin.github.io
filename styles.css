@@ -1,5 +1,10 @@
 head {
-  background-image: url("thing.png");
+  background-color: gray;
+  background-image: url("thing.PNG");
+}
+
+body {
+  background-image: url("thing.PNG");
 }
 
 ul {
