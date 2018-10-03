@@ -1,3 +1,7 @@
+head {
+  background-image: url("thing.png");
+}
+
 ul {
   list-style-type: none;
   border: 1px solid;
