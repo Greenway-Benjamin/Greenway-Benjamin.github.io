@@ -1,14 +1,13 @@
 header {
   width: 396px;
-  height: 219px;
-  background-color: gray;
+  height: 219px;  
   background-image: url("thing.PNG");
   background-repeat: no-repeat;
   background-size: auto;
 }
 
 body {
-  background-color: gray;
+  background-color: white;
 }
 
 ul {
