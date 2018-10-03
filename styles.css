@@ -1,9 +1,13 @@
 header {
   width: 396px;
   height: 219px;  
-  background-image: url("thing.PNG");
+  background-image: url("/thing.PNG");
   background-repeat: no-repeat;
   background-size: auto;
+  left: 50%;
+  top: 0;
+  text-align: center;
+  vertical-align: middle;
 }
 
 body {
