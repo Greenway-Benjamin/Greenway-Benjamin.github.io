@@ -4,6 +4,7 @@ head {
 }
 
 body {
+  background-color: red;
   background-image: url("thing.PNG");
 }
 
