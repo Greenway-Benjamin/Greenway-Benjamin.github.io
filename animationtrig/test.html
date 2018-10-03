@@ -1,54 +1,13 @@
 <!DOCTYPE html>
 <html>
 <Head>
-<link rel="stylesheet" href="transitionstyles.css">
-<Title>Transition Page</Title>
+
+<Title>Test Page</Title>
 </Head>
 <Body>
-<h1>The sad faces want to be happy!</h1>
-<div data-running="false" class="frowneysmiley">:(</div>
-<div data-running="false" class="frowneysmiley">>:(</div>
-<div data-running="false" class="frowneysmiley">:'(</div>
-<div data-running="false" class="frowneysmiley">:-(</div>
-<div data-running="false" class="frowneysmiley">>:-(</div>
-<div data-running="false" class="frowneysmiley">:'-(</div>
-  <p>You have made <h1 id="smilecount">0</h1> smiles</p>
+
+TESTING  
 </Body> 
 <Footer> 
-<script type="text/javascript"> 
-
-var frowneys = document.getElementsByClassName('frowneysmiley');
-  var happyCount = 0;
-for (var i = 0; i < frowneys.length; i++) {
-  frowneys[i].addEventListener("mouseover", changeToSmiley);
-  frowneys[i].addEventListener("mouseout", changeBack);
-}  
-  
-  function changeToSmiley() {    
-    var smiling = this.innerHTML;    
-    if (smiling == ':)') {
-      return;
-    }
-    var anum = Math.floor(Math.random() * 3) + 1;      
-    var newclass = 'smiley' + anum;    
-    this.innerHTML = ':)';    
-    this.classList.add(newclass);   
-      happyCount = happyCount + 1;    
-      document.getElementById('smilecount').innerHTML = happyCount;
-  }
-  function changeBack() {   
-    var stoprun = this.dataset.running;
-    if (stoprun == 'true') {
-      return;
-    }
-    this.dataset.running = 'true';
-    var changing = this;    
-    var timing = (Math.floor(Math.random() * 10) + 1) * 1000;    
-    setTimeout(function(){     changing.innerHTML = ':(';     
-                          changing.classList.remove('smiley1');     
-                          changing.classList.remove('smiley2');     
-                          changing.classList.remove('smiley3');
-                          changing.dataset.running = 'false';
-                         }, timing);  }
-
-</script>  </Footer></html>
+</Footer>
+</html>
