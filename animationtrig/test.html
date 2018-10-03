@@ -6,12 +6,12 @@
 </Head>
 <Body>
 <h1>The sad faces want to be happy!</h1>
-<div class="frowneysmiley">:(</div>
-<div class="frowneysmiley">>:(</div>
-<div class="frowneysmiley">:'(</div>
-<div class="frowneysmiley">:-(</div>
-<div class="frowneysmiley">>:-(</div>
-<div class="frowneysmiley">:'-(</div>
+<div data-running="false" class="frowneysmiley">:(</div>
+<div data-running="false" class="frowneysmiley">>:(</div>
+<div data-running="false" class="frowneysmiley">:'(</div>
+<div data-running="false" class="frowneysmiley">:-(</div>
+<div data-running="false" class="frowneysmiley">>:-(</div>
+<div data-running="false" class="frowneysmiley">:'-(</div>
   <p>You have made <h1 id="smilecount">0</h1> smiles</p>
 </Body> 
 <Footer> 
@@ -35,13 +35,19 @@ for (var i = 0; i < frowneys.length; i++) {
       document.getElementById('smilecount').innerHTML = happyCount;    
     }  
   }
-  function changeBack() {       
+  function changeBack() {   
+    var stoprun = this.dataset.running;
+    if (stoprun == 'true') {
+      return;
+    }
+    this.dataset.running = 'true';
     var changing = this;    
     var timing = (Math.floor(Math.random() * 10) + 1) * 1000;    
     setTimeout(function(){     changing.innerHTML = ':(';     
                           changing.classList.remove('smiley1');     
                           changing.classList.remove('smiley2');     
-                          changing.classList.remove('smiley3');    
+                          changing.classList.remove('smiley3');
+                          changing.dataset.running = 'false';
                          }, timing);  }
 
 </script>  </Footer></html>
