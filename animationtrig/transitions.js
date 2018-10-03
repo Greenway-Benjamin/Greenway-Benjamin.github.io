@@ -7,17 +7,23 @@ for (var i = 0; i < frowneys.length; i++) {
 }
   function changeToSmiley() {
     var smiling = this.innerHTML;
+    if (smiling == ':)') {
+      return
+    }
     var anum = Math.floor(Math.random() * 3) + 1;  
     var newclass = 'smiley' + anum;
     this.innerHTML = ':)';
     this.classList.add(newclass);
-    if (smiling != ':)') {
     happyCount = happyCount + 1;
-    document.getElementById('smilecount').innerHTML = happyCount;
-    }
+    document.getElementById('smilecount').innerHTML = happyCount;    
   }
 
-  function changeBack() {   
+  function changeBack() {
+    var stoprun = this.dataset.running;
+    if (stoprun == 'true') {
+      return;
+    }
+    this.dataset.running = 'true';
     var changing = this;
     var timing = (Math.floor(Math.random() * 10) + 1) * 1000;
     setTimeout(function(){
@@ -25,5 +31,6 @@ for (var i = 0; i < frowneys.length; i++) {
      changing.classList.remove('smiley1');
      changing.classList.remove('smiley2');
      changing.classList.remove('smiley3');
+     changing.dataset.running = 'false';
     }, timing);
   }
