@@ -10,11 +10,13 @@ ul {
 }
 
 li {
+  display: block;
   border-bottom: 1px solid;
   text-align: center;
+  text-decoration: none;
 }
 
-li a: hover {
+li a:hover {
   color: white;
   background-color: green;
 }
