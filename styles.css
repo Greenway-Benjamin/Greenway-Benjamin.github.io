@@ -6,7 +6,7 @@ ul {
   width: 200px;
 }
 
-li {
+li a {
   display: block;
   border-bottom: 1px solid;
   text-align: center;
