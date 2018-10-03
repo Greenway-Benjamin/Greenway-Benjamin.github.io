@@ -39,9 +39,12 @@ ul {
 li a {
   display: block;
   border-bottom: 1px solid;
+  border-color: white;
   text-align: right;
   text-decoration: none;
   padding: 8px 16px;
+  color: white;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 li a:hover {
