@@ -28,6 +28,7 @@ footer {
 
 ul {
   list-style-type: none;
+  float: left;
   border: 1px solid;
   margin: 0;
   padding: 0;
