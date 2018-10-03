@@ -1,4 +1,6 @@
 header {
+  width: 396px;
+  height: 219px;
   background-color: gray;
   background-image: url("thing.PNG");
   background-repeat: no-repeat;
