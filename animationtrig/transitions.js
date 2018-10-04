@@ -10,7 +10,7 @@ for (var i = 0; i < frowneys.length; i++) {
     if (smiling == '(:') {
       return
     }
-    var anum = Math.floor(Math.random() * 3) + 1;  
+    var anum = Math.floor(Math.random() * 4) + 1;  
     var newclass = 'smiley' + anum;
     this.innerHTML = '(:';
     this.classList.add(newclass);
@@ -31,6 +31,7 @@ for (var i = 0; i < frowneys.length; i++) {
      changing.classList.remove('smiley1');
      changing.classList.remove('smiley2');
      changing.classList.remove('smiley3');
+     changing.classList.remove('smiley4'); 
      changing.dataset.running = 'false';
     }, timing);
   }
