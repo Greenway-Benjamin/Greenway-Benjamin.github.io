@@ -7,12 +7,12 @@ for (var i = 0; i < frowneys.length; i++) {
 }
   function changeToSmiley() {
     var smiling = this.innerHTML;
-    if (smiling == ':)') {
+    if (smiling == '(:') {
       return
     }
     var anum = Math.floor(Math.random() * 3) + 1;  
     var newclass = 'smiley' + anum;
-    this.innerHTML = ':)';
+    this.innerHTML = '(:';
     this.classList.add(newclass);
     happyCount = happyCount + 1;
     document.getElementById('smilecount').innerHTML = happyCount;    
