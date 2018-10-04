@@ -15,16 +15,13 @@
 
 .frowneysmiley.smiley1 {
   background-color: green;
-  transition: 5s;
 }
 
 .frowneysmiley.smiley2 {
   background-color: yellow;
   color: black;
-  transition: 5s;
 }
 
 .frowneysmiley.smiley3 {
   background-color: blue;
-  transition: 5s;
 }
