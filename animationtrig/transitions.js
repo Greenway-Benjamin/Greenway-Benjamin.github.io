@@ -2,7 +2,7 @@ var frowneys = document.getElementsByClassName('frowneysmiley');
 var happyCount = 0;
 
 for (var i = 0; i < frowneys.length; i++) {
-  frowneys[i].addEventListener("fullscreenchange", changeToSmiley);
+  frowneys[i].addEventListener("mouseover", changeToSmiley);
   frowneys[i].addEventListener("mouseout", changeBack);
 }
   function changeToSmiley() {
