@@ -32,4 +32,5 @@
 .frowneysmiley.smiley4 {
   background-color: pink;
   transform: rotate(-90deg);
+  color: black;
 }
