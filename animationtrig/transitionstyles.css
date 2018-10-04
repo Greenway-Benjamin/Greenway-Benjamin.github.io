@@ -9,19 +9,22 @@
   text-align: center;
   padding: 20px;
   margin: 10px;
-  transition: 5s;
+  transition: 5s, transform 1s;
   transform: rotate(90deg);
 }
 
 .frowneysmiley.smiley1 {
   background-color: green;
+  transform: rotate(270deg);
 }
 
 .frowneysmiley.smiley2 {
   background-color: yellow;
   color: black;
+  transform: rotate(270deg);
 }
 
 .frowneysmiley.smiley3 {
   background-color: blue;
+  transform: rotate(270deg);
 }
