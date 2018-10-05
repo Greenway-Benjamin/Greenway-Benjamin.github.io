@@ -37,7 +37,7 @@ footer {
 ul {
   list-style-type: none;
   position: fixed;
-  top: 0;
+  top: 230px;
   left: 0;
   border: 1px solid;
   margin: 0;
