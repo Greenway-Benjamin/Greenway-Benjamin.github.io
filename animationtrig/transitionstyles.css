@@ -6,6 +6,11 @@
   right: 100px;
 }
 
+#counter {
+ position: relative;
+  bottom: 0px;
+}
+
 .frowneysmiley {
   position: relative;
   font-size: 30pt;
@@ -16,7 +21,6 @@
   height: 50px;
   width: 50px;
   text-align: center;
-  padding: 20px;
   margin: 10px;
   transition: 5s, transform 1s;
   transform: rotate(90deg);
