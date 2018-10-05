@@ -17,8 +17,8 @@ header {
   height: 219px;  
   line-height: 219px;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 40%;
+  margin-right: 60%;
   background-image: url("/thing.PNG");
   background-repeat: no-repeat;
   background-size: auto;
