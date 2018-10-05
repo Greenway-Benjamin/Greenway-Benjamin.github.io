@@ -1,5 +1,7 @@
 .holder {
   position: relative;
+  height:300px;
+  width: 100%;
   left: 200px;
   right: 100px;
 }
