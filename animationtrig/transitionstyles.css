@@ -7,7 +7,9 @@
 }
 
 .frowneysmiley {
+  position: relative;
   font-size: 30pt;
+  overflow: auto;
   float: left;
   color: white;
   background-color: black;
