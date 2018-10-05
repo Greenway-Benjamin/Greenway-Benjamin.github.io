@@ -8,6 +8,7 @@ body {
   background-image: linear-gradient(150deg, #e0e2e5, #ffffff);
   margin: 0px;
   min-height: 100%;
+  left: 200px;
 }
 
 header {
