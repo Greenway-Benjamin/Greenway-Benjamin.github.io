@@ -1,3 +1,8 @@
+.holder {
+  position: relative;
+  left: 200px;
+}
+
 .frowneysmiley {
   font-size: 30pt;
   position: relative;
