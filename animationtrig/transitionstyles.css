@@ -1,11 +1,11 @@
 .holder {
   position: relative;
   left: 200px;
+  right: 100px;
 }
 
 .frowneysmiley {
   font-size: 30pt;
-  position: relative;
   float: left;
   color: white;
   background-color: black;
