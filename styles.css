@@ -6,11 +6,8 @@ html {
 
 body {
   background-image: linear-gradient(150deg, #e0e2e5, #ffffff);
-  position: relative;
-  margin: 0px;
   min-height: 100%;
-  width: 85%;
-  left: 200px;
+  margin-left: 200px;
 }
 
 header {
