@@ -1,1 +1,59 @@
 
+<!Doctype HTML>
+<head>
+<style>
+ body{
+background-color: blue;
+color: white;
+}
+
+ .stage {
+  position:relative;
+  background-color: red;
+  height: 200px;
+  width: 600px;
+}
+
+ .ball {
+ position:absolute;
+ left: 0px;
+ top: 0px;
+ height: 20px;
+ width: 20px;
+ background-color: yellow;
+ border-radius: 50%;
+ animation: backandforth 3s, bounce .7s;
+ animation-direction: alternate;
+ animation-iteration-count: infinite;
+ animation-timing-function: linear;
+}
+
+@keyframes backandforth {
+from { left: 0px; }
+  to   { left: 580px;}
+}
+@keyframes bounce {
+from { top: 0px; animation-timing-function: ease-in;}
+to {top: 180px; animation-timing-function: ease-out;}
+}
+
+</style>
+</head>
+<body>
+<h3>Create a new ball!</h3>
+<button onclick="newBall()">New Ball</button>
+<br>
+<div class="stage">
+<script type="text/javascript">
+function newBall() {
+var newball = document.createElement("div");
+newball.classList.add("ball");
+document.getElementsByClassName("stage")[0].appendChild(newball);
+}
+</script>
+
+</div>
+</body>
+<footer>
+</footer>
+</html>

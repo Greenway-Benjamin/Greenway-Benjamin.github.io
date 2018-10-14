@@ -6,53 +6,182 @@ background-color: blue;
 color: white;
 }
 
- .stage {
-  position:relative;
-  background-color: red;
-  height: 200px;
-  width: 600px;
-}
-
- .ball {
- position:absolute;
- left: 0px;
- top: 0px;
- height: 20px;
- width: 20px;
- background-color: yellow;
- border-radius: 50%;
- animation: backandforth 3s, bounce .7s;
- animation-direction: alternate;
- animation-iteration-count: infinite;
- animation-timing-function: linear;
-}
-
-@keyframes backandforth {
-from { left: 0px; }
-  to   { left: 580px;}
-}
-@keyframes bounce {
-from { top: 0px; animation-timing-function: ease-in;}
-to {top: 180px; animation-timing-function: ease-out;}
-}
-
 </style>
 </head>
 <body>
-<h3>Create a new ball!</h3>
-<button onclick="newBall()">New Ball</button>
+<a href="/">Go Home</a>
+<h3>Loop</h3>
+    <p>Enter a number!</p>
+<input type="text" id="loopnumber">
+<button onclick="loopmoney()">Loop this much money</button>
 <br>
-<div class="stage">
-<script type="text/javascript">
-function newBall() {
-var newball = document.createElement("div");
-newball.classList.add("ball");
-document.getElementsByClassName("stage")[0].appendChild(newball);
-}
-</script>
+<div id="loopoutput"></div><br>
 
+<h3>Conditional Statements</h3>
+Type "Yes" for a smiley and "No" for a frowney<br>
+<input type="text" id="shouldismile">
+<div id="smiley">
 </div>
+
+<h3>Parameters</h3>
+    <p>Enter three words then press 'Get Output'</p>
+<button onclick="useparameters()">Get Output</button><br>
+Input 1: <input type="text" id="input1"><br>
+Input 2: <input type="text" id="input2"><br>
+Input 3: <input type="text" id="input3"><br>
+Output: <div id="parameteroutput"></div>
+
+<h3>Array</h3>
+    <p>Add an item to the grocery list by entering a word and click add! Take it off by entering the same item and clicking remove</p>
+<input type="text" id="addgrocery"><button onclick="addgrocery()">Add</button><br>
+<input type="text" id="removegrocery"><button onclick="removegrocery()">Remove</button><br>
+Groceries to buy:
+<div id="grocerylist">
+<ul>
+<li class="grocery">Banana</li>
+<li class="grocery">One grape</li>
+</ul>
+</div>
+
+<h3>Associative Array</h3>
+    <p>Enter what you want to know! With these four options!</p>
+<ul>
+<li>Hat = Head</li>
+<li>Shirt = Torso</li>
+<li>Pants = Legs</li>
+<li>Shoes = Feet</li>
+</ul>
+<input type ="text" id="associateme"> = <p id="associated"></p>
+
 </body>
 <footer>
+
+<script type="text/javascript">
+
+var associations = {"HAT" : "Head", "SHIRT" : "Torso", "PANTS" : "Legs", "SHOES" : "Feet"};
+var associating = document.getElementById("associateme");
+associating.onkeyup = function() {
+ var item = associating.value.toUpperCase();
+ if (associations[item] == null) {
+ document.getElementById("associated").innerHTML = "Nothing";
+}
+ else {
+ document.getElementById("associated").innerHTML = associations[item];
+}
+}
+
+
+// Function for loop money
+function loopmoney() {
+var loopnumber = parseInt(document.getElementById("loopnumber").value, 10);
+var text = "";
+// Loop the word 'Money' the number of times in the text box
+for (i = 0; i < loopnumber; i++) {
+text += "Money <br>";
+}
+document.getElementById("loopoutput").innerHTML = text;
+}
+
+//Global variable
+var smileinput = document.getElementById("shouldismile");
+
+//Give smileinput an onkeyup function to change depending on text value
+smileinput.onkeyup = function(){
+var smileornot = document.getElementById("shouldismile").value.toUpperCase();
+if (smileornot == "YES") {
+document.getElementById("smiley").innerHTML = ":)";
+} else if (smileornot == "NO") {
+document.getElementById("smiley").innerHTML = ":(";
+} else {
+document.getElementById("smiley").innerHTML = "What?";
+}
+};
+
+//Function to use parameters in another function
+function useparameters() {
+ var param1 = document.getElementById("input1").value;
+ var param2 = document.getElementById("input2").value;
+ var param3 = document.getElementById("input3").value;
+
+//Run the parameter function with the three input values
+ var text = putinstring(param1, param2, param3);
+ document.getElementById("parameteroutput").innerHTML = text;
+}
+
+//Function accepting parameters and giving back a string
+function putinstring(string1, string2, string3) {
+ var giveback = "Your first word was '" + string1 + "' and your second word was '" + string2 + "' and finally, the last word is a bit lame but it's '" + string3 + ".'";
+ return giveback;
+}
+
+//Function to add grocery to list
+function addgrocery() {
+ var text = "<ul>"
+
+//get the HTML collection
+ var groceriesraw = document.getElementsByClassName("grocery"); 
+ var groceries = [];
+
+//loop through the HTML collection and put into an array
+ for (i=0; i<groceriesraw.length; i++) {
+ groceries.push(groceriesraw[i].innerHTML);
+}
+
+//Add the input value to the array
+groceries.push(document.getElementById("addgrocery").value);
+
+//Use the array's for loop to run a function for each item
+groceries.forEach(addtext);
+
+ text += "</ul>";
+ document.getElementById("grocerylist").innerHTML = text;
+
+//Local function to add text
+ function addtext(value) {
+ text += "<li class=\"grocery\">" + value + "</li>";
+}
+}
+
+//Function to remove item from from grocery list
+function removegrocery() {
+
+var text = "<ul>"
+//Get the current grocery list as an HTML collection
+var groceriesraw = document.getElementsByClassName("grocery"); 
+ var groceries = [];
+//Put HTML collection into a javascript array
+ for (i=0; i<groceriesraw.length; i++) {
+ groceries.push(groceriesraw[i].innerHTML);
+}
+
+//Put HTML collection into another javascript array to use for comparing, putting all to upper case
+ var groceriescompare = [];
+ for (i=0; i<groceriesraw.length; i++) {
+ groceriescompare.push(groceriesraw[i].innerHTML.toUpperCase());
+}
+
+//Get item to remove in all upper case
+ var toremove = document.getElementById("removegrocery").value.toUpperCase();
+//Get index number of grocery item, and remove the next item at that index if the item is found
+ var index = groceriescompare.indexOf(toremove);
+ if( index != -1) {
+ groceries.splice(index, 1);
+
+//For each item addtext function, replace old list with new updated list
+ groceries.forEach(addtext);
+ 
+ text += "</ul>";
+ document.getElementById("grocerylist").innerHTML = text;
+}
+
+//Function to add text
+ function addtext(value) {
+ text += "<li class=\"grocery\">" + value + "</li>";
+}
+
+}
+
+</script>
+
 </footer>
 </html>
