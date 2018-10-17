@@ -16,25 +16,53 @@ color: white;
 
  .ball {
  position:absolute;
- left: 0px;
- top: 0px;
  height: 20px;
  width: 20px;
  background-color: yellow;
  border-radius: 50%;
- animation: backandforth 3s, bounce .7s;
- animation-direction: alternate;
+ animation: backandforth 6s, bounce 1.4s;
  animation-iteration-count: infinite;
  animation-timing-function: linear;
 }
 
+ .square {
+ position:absolute;
+ height: 20px;
+ width: 20px;
+ background-color: orange;
+ animation: backandforth 6s, bounce 1.4s;
+ animation-direction: alternate;
+ animation-iteration-count: infinite;
+ animation-timing-function: linear;
+}
+ .bomb {
+ background-color: black;
+ transform: scale(1.5);
+ animation: backandforth 12s, bounce 2.8s;
+ transition: 1s;
+}
+ .explode {
+ background-color: white;
+ transform: scale(3);
+ transition: .5s;
+ animation: backandforth 12s, bounce 2.8s, fadeout .5s;
+ animation-delay: .5s;
+}
+
+@keyframes fadeout {
+ from {opacity: 1;}
+ to {opacity: 0;}
+}
+
 @keyframes backandforth {
-from { left: 0px; }
-  to   { left: 580px;}
+0%{ left: 0px; }
+50%{ left: 580px;}
+100%{left: 0px; }
 }
 @keyframes bounce {
-from { top: 0px; animation-timing-function: ease-in;}
-to {top: 180px; animation-timing-function: ease-out;}
+0% { top: 0px; animation-timing-function: ease-in;}
+50% {top: 180px; animation-timing-function: ease-out;}
+100% {top: 0px; animation-timing-function: ease-in;}
 }
 
 </style>
@@ -42,18 +70,106 @@ to {top: 180px; animation-timing-function: ease-out;}
 <body>
 <h3>Create a new ball!</h3>
 <button onclick="newBall()">New Ball</button>
+<button onclick="stupidBall()">Stupid Ball</button>
+<button onclick="changeToSquare()">Turn one to square</button>
+<button onclick="setBombs()">Set Bombs</button>
+<button onclick="deleteBalls()">Delete all balls</button>
+<button onclick="deleteAll()">Delete all</button>
 <br>
 <div class="stage">
+
+</div>
+</body>
+<footer>
 <script type="text/javascript">
+
 function newBall() {
 var newball = document.createElement("div");
 newball.classList.add("ball");
 document.getElementsByClassName("stage")[0].appendChild(newball);
 }
-</script>
 
-</div>
-</body>
-<footer>
+function stupidBall() {
+var newball = document.createElement("div");
+newball.classList.add("ball");
+document.body.appendChild(newball);
+}
+
+function deleteBalls() {
+var balls = document.getElementsByClassName("ball");
+for (i = balls.length - 1; i >= 0; i--) {
+balls[i].parentNode.removeChild(balls[i]);
+}
+}
+
+function deleteAll() {
+var balls = document.getElementsByClassName("ball");
+for (i = balls.length - 1; i >= 0; i--) {
+balls[i].parentNode.removeChild(balls[i]);
+}
+
+var squares= document.getElementsByClassName("square");
+for (i = squares.length - 1; i >= 0; i--) {
+squares[i].parentNode.removeChild(squares[i]);
+}
+
+}
+
+function changeToSquare() {
+var vtimer1 = parseFloat(window.getComputedStyle(document.getElementsByClassName("ball")[0]).getPropertyValue('top'));
+var htimer1 = parseFloat(window.getComputedStyle(document.getElementsByClassName("ball")[0]).getPropertyValue('left'));
+
+setTimeout(function() {
+var vtime = 0;
+var htime = 0;
+
+var vtimer2 = parseFloat(window.getComputedStyle(document.getElementsByClassName("ball")[0]).getPropertyValue('top'));
+var htimer2 = parseFloat(window.getComputedStyle(document.getElementsByClassName("ball")[0]).getPropertyValue('left'));
+
+if (vtimer2 > vtimer1) {
+ vtime = vtimer2 * -.7 / 180;
+}
+if (vtimer2 < vtimer1) {
+ vtime = vtimer2 * .7 / 180 - 1.4;
+}
+if (htimer2 > htimer1) {
+ htime = htimer2 * -3 / 580;
+}
+if (htimer2 < htimer1) {
+ htime = htimer2 * 3 / 580 - 6;
+}
+vtime += "s";
+htime += "s";
+var newsquare = document.createElement("div");
+newsquare.classList.add("square");
+newsquare.style.animationDelay = htime + ", " + vtime;
+var balls = document.getElementsByClassName("ball");
+balls[0].parentNode.replaceChild(newsquare, balls[0]);}, 1)
+}
+
+function setBombs() {
+var balls = document.getElementsByClassName("ball");
+for (i = balls.length - 1; i >= 0; i--) {
+balls[i].classList.add("bomb");
+balls[i].addEventListener("click", explode);
+}
+
+var squares= document.getElementsByClassName("square");
+for (i = squares.length - 1; i >= 0; i--) {
+squares[i].classList.add("bomb");
+squares[i].addEventListener("click", explode);
+}
+
+}
+
+function explode() {
+ thebomb = this;
+ thebomb.classList.add("explode");
+ setTimeout(function() {
+thebomb.parentNode.removeChild(thebomb);
+}, 1000);
+}
+
+</script>
 </footer>
 </html>
