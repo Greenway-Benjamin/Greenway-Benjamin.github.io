@@ -20,7 +20,7 @@ color: white;
  width: 20px;
  background-color: yellow;
  border-radius: 50%;
- animation: backandforth 6s, bounce 1.4s;
+ animation: backandforth 12s, bounce 2.8s;
  animation-iteration-count: infinite;
  animation-timing-function: linear;
 }
@@ -30,7 +30,7 @@ color: white;
  height: 20px;
  width: 20px;
  background-color: orange;
- animation: backandforth 6s, bounce 1.4s;
+ animation: backandforth 12s, bounce 2.8s;
  animation-direction: alternate;
  animation-iteration-count: infinite;
  animation-timing-function: linear;
@@ -39,6 +39,8 @@ color: white;
  background-color: black;
  transform: scale(1.5);
  animation: backandforth 12s, bounce 2.8s;
+ animation-iteration-count: infinite;
+ animation-timing-function: linear;
  transition: 1s;
 }
  .explode {
@@ -79,6 +81,7 @@ color: white;
 <div class="stage">
 
 </div>
+    <div id="testly"></div>
 </body>
 <footer>
 <script type="text/javascript">
@@ -120,26 +123,30 @@ var vtimer1 = parseFloat(window.getComputedStyle(document.getElementsByClassName
 var htimer1 = parseFloat(window.getComputedStyle(document.getElementsByClassName("ball")[0]).getPropertyValue('left'));
 
 setTimeout(function() {
-var vtime = 0;
-var htime = 0;
+var vtime = parseFloat(0);
+var htime = parseFloat(0);
 
 var vtimer2 = parseFloat(window.getComputedStyle(document.getElementsByClassName("ball")[0]).getPropertyValue('top'));
 var htimer2 = parseFloat(window.getComputedStyle(document.getElementsByClassName("ball")[0]).getPropertyValue('left'));
-
+    
 if (vtimer2 > vtimer1) {
- vtime = vtimer2 * -.7 / 180;
+ vtime = vtimer2 * -1.4 / 180;
 }
 if (vtimer2 < vtimer1) {
- vtime = vtimer2 * .7 / 180 - 1.4;
+ vtime = vtimer2 * 1.4 / 180 - 2.8;
 }
 if (htimer2 > htimer1) {
- htime = htimer2 * -3 / 580;
+ htime = htimer2 * -6 / 580;
 }
 if (htimer2 < htimer1) {
- htime = htimer2 * 3 / 580 - 6;
+ htime = htimer2 * 6 / 580 - 12;
 }
 vtime += "s";
 htime += "s";
+    
+    document.getElementById("testly").innerHTML = "vtimer1 " + vtimer1 + ". vtimer2 " + vtimer2 + ". htimer1 " + htimer1 + ". htimer2 " + htimer2 + ". vtime " + vtime + ". htime " + htime;
+    
+    
 var newsquare = document.createElement("div");
 newsquare.classList.add("square");
 newsquare.style.animationDelay = htime + ", " + vtime;
