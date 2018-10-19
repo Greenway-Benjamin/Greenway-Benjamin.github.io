@@ -47,7 +47,7 @@ color: white;
  background-color: white;
  transform: scale(3);
  transition: .5s;
- animation: backandforth 12s, bounce 2.8s, fadeout 1s;
+ animation: backandforth 12s, bounce 2.8s, fadeout .5s;
  animation-direction: alternate;
  animation-iteration-count: infinite;
  animation-timing-function: linear;
@@ -82,9 +82,7 @@ color: white;
 <button onclick="deleteAll()">Delete all</button>
 <br>
 <div class="stage">
-
 </div>
-    <div id="testly"></div>
 </body>
 <footer>
 <script type="text/javascript">
@@ -147,9 +145,6 @@ if (htimer2 < htimer1) {
 vtime += "s";
 htime += "s";
     
-    document.getElementById("testly").innerHTML = "vtimer1 " + vtimer1 + ". vtimer2 " + vtimer2 + ". htimer1 " + htimer1 + ". htimer2 " + htimer2 + ". vtime " + vtime + ". htime " + htime;
-    
-    
 var newsquare = document.createElement("div");
 newsquare.classList.add("square");
 newsquare.style.animationDelay = htime + ", " + vtime;
@@ -160,17 +155,16 @@ balls[0].parentNode.replaceChild(newsquare, balls[0]);}, 50);
 function setBombs() {
 var balls = document.getElementsByClassName("ball");
 for (i = balls.length - 1; i >= 0; i--) {
-balls[i].classList.add("bomb");
+balls[i].setAttribute("class", "ball bomb");
 balls[i].addEventListener("click", explode);
-    document.getElementById("timetobomb").innerHTML = "<h3>Click the bombs!</h3>"
 }
 
 var squares= document.getElementsByClassName("square");
 for (i = squares.length - 1; i >= 0; i--) {
-squares[i].classList.add("bomb");
+squares[i].setAttribute("class", "square bomb");
 squares[i].addEventListener("click", explode);
 }
-
+document.getElementById("timetobomb").innerHTML = "<h3>Click the bombs!</h3>"
 }
 
 function explode() {
@@ -178,7 +172,7 @@ function explode() {
  thebomb.classList.add("explode");
  setTimeout(function() {
 thebomb.parentNode.removeChild(thebomb);
-}, 1000);
+}, 500);
 }
 
 </script>
