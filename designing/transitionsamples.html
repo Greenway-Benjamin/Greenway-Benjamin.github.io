@@ -1,0 +1,180 @@
+<!Doctype HTML>
+<head>
+<style>
+ body{
+background-color: blue;
+color: white;
+}
+#thing{
+height: 100px;
+ width: 100px;
+ background-color: red;
+ transition: 3s;
+ border: solid 10px;
+ text-align: center;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+
+}
+#otherthing{
+ height: 100px;
+ width: 100px;
+ background-color: red;
+ transition: 9999999s, background-color 1s;
+ border: solid 10px;
+ text-align: center;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+
+#thing:hover {
+background-color: white;
+transform: translate(200px, 10px) rotateX(180deg) rotateY(90deg);
+}
+#otherthing:hover {
+background-color: white;
+transform: translate(200px, 10px);
+transition: background-color 3s, transform 5s;
+}
+
+.thing {
+ height: 100px;
+ width: 100px;
+ background-color: red;
+ transition: 5s;
+ border: solid 10px;
+}
+#thing3 {
+transition-property: background-color;
+transition-duration: 1s;
+}
+#thing4 {
+transition-property: transform;
+transition-duration: 3s;
+}
+#thing5 {
+transition-property: transform, background-color;
+transition-duration: 3s, 1s;
+}
+#thing6 {
+transition-duration: 10s;
+}
+#thing7 {
+transition-delay: 2s;
+}
+#thing8 {
+transition-timing-function: ease-in;
+}
+#thing9 {
+transition-timing-function: ease-out;
+}
+#thing10 {
+transition-timing-function: ease-in-out;
+}
+#thing11 {
+transition-timing-function: linear;
+}
+#thing12 {
+transition-timing-function: ease;
+}
+#thing13 {
+transition-timing-function: step-start;
+}
+#thing14 {
+transition-timing-function: step-end;
+}
+#thing15 {
+transition-timing-function: steps(3, start);
+}
+#thing16 {
+transition-timing-function: steps(3, end);
+}
+#thing17 {
+transition-timing-function: cubic-bezier(.1, 3, 1, .5);
+}
+#thing18 {
+transition: transform 2s cubic-bezier(.1, 3, 1, .5) 2s;
+}
+</style>
+</head>
+<body>
+<h1>Mouse over the boxes</h1>
+<h3>CSS VS Javascript triggered</h3>
+<h3>CSS</h3>
+    <div id="thing"></div><br>
+<h3>Cool CSS Trick</h3>
+    <div id="otherthing"></div><br>
+<h3>javascript</h3>
+    <div class = "thing" id="thing2"></div> <h3>transition-property: background-color;<br>
+transition-duration: 1s;</h3>
+    <div class = "thing" id="thing3"></div> <h3>transition-property: transform; <br>
+transition-duration: 3s;</h3>
+    <div class = "thing" id="thing4"></div> <h3>transition-property: transform, background-color;<br>
+transition-duration: 3s, 1s;</h3>
+    <div class = "thing" id="thing5"></div> <h3>transition-duration: 10s</h3>
+    <div class = "thing" id="thing6"></div> <h3>transition-delay: 2s;</h3>
+    <div class = "thing" id="thing7"></div> <h3>transition-timing-function: ease-in; </h3>
+    <div class = "thing" id="thing8"></div> <h3>transition-timing-function: ease-out; </h3>
+    <div class = "thing" id="thing9"></div> <h3>transition-timing-function: ease-in-out; </h3>
+    <div class = "thing" id="thing10"></div> <h3>transition-timing-function: linear; </h3>
+    <div class = "thing" id="thing11"></div> <h3>transition-timing-function: ease; </h3>
+    <div class = "thing" id="thing12"></div> <h3>transition-timing-function: step-start; </h3>
+    <div class = "thing" id="thing13"></div> <h3>transition-timing-function: step-end; </h3>
+    <div class = "thing" id="thing14"></div> <h3>transition-timing-function: steps(3, start); </h3>
+    <div class = "thing" id="thing15"></div> <h3>transition-timing-function: steps(3, end); </h3>
+    <div class = "thing" id="thing16"></div> <h3>transition-timing-function: cubic-bezier(.1, 3, 1, .5); </h3>
+    <div class = "thing" id="thing17"></div> <h3>transition: transform 2s cubic-bezier(.1, 3, 1, .5) 2s; </h3>
+    <div class = "thing" id="thing18"></div> <h3>The proper order for the shorthand is: <br>transition: property duration timing-function delay|initial|inherit; </h3>
+</body>
+<footer>
+<script type="text/javascript">
+
+var xinterval;
+
+document.getElementById("otherthing").addEventListener("mouseout", function() {
+clearInterval(xinterval);
+var timer = this;
+var timeleftstring = getComputedStyle(document.querySelector('#otherthing')).transitionDuration;
+var timeleft = timeleftstring.substr(0,timeleftstring.indexOf('s'));
+
+xinterval = setInterval(function() {
+timeleft --;
+if (timeleft < 0) {
+clearInterval(xinterval);
+}
+var s = Math.floor(timeleft % (60));
+if (s < 10) {
+s = "0" + s;
+}
+var m = Math.floor(timeleft % (60 * 60) / 60);
+if (m < 10) {
+m = "0" + m;
+}
+var h = Math.floor(timeleft % (60 * 60 * 24) / (60 * 60));
+var d = Math.floor(timeleft / (60 * 60 * 24));
+timer.innerHTML = d + ": " + h + ": " + m + ": " + s;
+}, 1000);
+
+});
+
+var elements = document.getElementsByClassName("thing");
+
+for (i = 0; i < elements.length; i++) {
+elements[i].addEventListener("mouseover", function(){
+this.style.transform = "translate(200px, 10px) rotateX(180deg) rotateY(90deg)";
+this.style.backgroundColor = "white";
+});
+}
+for (i = 0; i < elements.length; i++) {
+elements[i].addEventListener("transitionend", function(event) {
+//if(event.propertyName != "transform") {return;}
+this.style.transform = "translate(0%, 0%)";
+this.style.backgroundColor = "red";
+});
+}
+</script>
+</footer>
+</html>

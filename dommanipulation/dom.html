@@ -99,26 +99,6 @@ newball.classList.add("ball");
 document.body.appendChild(newball);
 }
 
-function deleteBalls() {
-var balls = document.getElementsByClassName("ball");
-for (i = balls.length - 1; i >= 0; i--) {
-balls[i].parentNode.removeChild(balls[i]);
-}
-}
-
-function deleteAll() {
-var balls = document.getElementsByClassName("ball");
-for (i = balls.length - 1; i >= 0; i--) {
-balls[i].parentNode.removeChild(balls[i]);
-}
-
-var squares= document.getElementsByClassName("square");
-for (i = squares.length - 1; i >= 0; i--) {
-squares[i].parentNode.removeChild(squares[i]);
-}
-
-}
-
 function changeToSquare() {
 var vtimer1 = parseFloat(window.getComputedStyle(document.getElementsByClassName("ball")[0]).getPropertyValue('top'));
 var htimer1 = parseFloat(window.getComputedStyle(document.getElementsByClassName("ball")[0]).getPropertyValue('left'));
@@ -173,6 +153,26 @@ function explode() {
  setTimeout(function() {
 thebomb.parentNode.removeChild(thebomb);
 }, 500);
+}
+    
+function deleteBalls() {
+var balls = document.getElementsByClassName("ball");
+for (i = balls.length - 1; i >= 0; i--) {
+balls[i].parentNode.removeChild(balls[i]);
+}
+}
+
+function deleteAll() {
+var balls = document.getElementsByClassName("ball");
+for (i = balls.length - 1; i >= 0; i--) {
+balls[i].parentNode.removeChild(balls[i]);
+}
+
+var squares= document.getElementsByClassName("square");
+for (i = squares.length - 1; i >= 0; i--) {
+squares[i].parentNode.removeChild(squares[i]);
+}
+
 }
 
 </script>
