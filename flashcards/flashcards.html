@@ -1,0 +1,141 @@
+<!Doctype HTML>
+<head>
+<style>
+ body{
+background-color: blue;
+color: white;
+}
+ .question {
+ float: left;
+ position: relative;
+ height: 250px;
+ width: 250px;
+}
+ .card {
+ position: relative;
+ height: 170px;
+ width: 120px;
+}
+ input {
+ border: solid black .5px;
+}
+input:focus {
+    border: solid yellow 1px;
+}
+ button {
+ border: solid black .5px;
+}
+ .card:hover .back{
+ transform: rotateY(0deg);
+}
+ .card:hover .front{
+ transform: rotateY(180deg);
+}
+ .front, .back{
+ border: solid black 10px;
+ transition: 1s;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ color: black;
+ position: absolute;
+ top: 0%;
+ left: 0%;
+ height: 150px;
+ width: 100px;
+ background-color: white;
+ backface-visibility: hidden;
+}
+
+ .back {
+  transform: rotateY(180deg);
+}
+
+
+</style>
+</head>
+<body>
+<h3>Flashcards</h3>
+<div id = "test">Test</div>
+    <input type="text" id="question">Question<br>
+    <input type="text" id="answer">Answer<br>
+    <input type="text" id="hint">Hint<br>
+<button onclick="makeQuestion()">Create Question</button>
+<div id="quiz">
+</div>
+</body>
+<footer>
+<script type="text/javascript">
+ function question(question, hint, answer) {
+ thequestion = this;
+ this.question = question;
+ this.hint = hint;
+ this.answer = answer;
+ this.newquestion = document.createElement("div");
+ this.newcard = document.createElement("div");
+ this.cardfront = document.createElement("div");
+ this.cardback = document.createElement("div");
+ this.input = document.createElement("input");
+ this.check = document.createElement("button");
+ this.generateQuestion = function(){
+  
+   this.newquestion.classList.add("question");
+   document.getElementById("quiz").appendChild(this.newquestion);
+  
+   this.newcard.classList.add("card");
+   this.newquestion.appendChild(this.newcard);
+  
+   this.cardfront.classList.add("front");
+   this.cardfront.innerHTML = this.question;
+   this.newcard.appendChild(this.cardfront);
+  
+   this.cardback.classList.add("back");
+   this.cardback.innerHTML = "Hint: " + this.hint;
+   this.newcard.appendChild(this.cardback);
+  
+   this.newquestion.appendChild(this.input);
+  
+   this.check.innerHTML = "Check Answer";
+   this.check.onclick = this.checkAnswer;
+   this.check.keydown = function(event) {
+       if (event.key == "Enter") {
+           makeQuestion();
+       }
+   }
+   this.newquestion.appendChild(this.check);
+  };
+ this.checkAnswer = function() {
+   if (thequestion.input.value.toUpperCase() == answer) {
+    document.getElementById("test").innerHTML = "Correct";
+   } else {
+    document.getElementById("test").innerHTML = "WRONG SUCKA";
+   }
+  };
+}
+function makeQuestion() {
+    document.getElementById("question").style.border = "";
+    document.getElementById("answer").style.border = "";
+    var thequestion = document.getElementById("question").value;
+    if (thequestion == "") {
+        document.getElementById("question").style.border = "solid red .5px";
+        return;
+    }
+    var theanswer = document.getElementById("answer").value.toUpperCase();
+    if (theanswer == "") {
+        document.getElementById("answer").style.border = "solid red .5px";
+        return;
+    }
+    var thehint = document.getElementById("hint").value;
+    if (thehint == "") {
+        thehint = "No hint";
+    }
+var myquestion = new question(thequestion, thehint, theanswer);
+myquestion.generateQuestion();
+    document.getElementById("question").value = "";
+    document.getElementById("answer").value = "";
+    document.getElementById("hint").value = "";
+}
+</script>
+</footer>
+</html>
