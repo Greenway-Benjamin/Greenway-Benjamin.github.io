@@ -13,9 +13,12 @@ color: white;
 }
  .card {
  position: relative;
- height: 170px;
- width: 120px;
+ height: 120px;
+ width: 170px;
+ transform: rotateY(0deg);
+ transition: 1s;
 }
+
  input {
  border: solid black .5px;
 }
@@ -32,7 +35,7 @@ input:focus {
  transform: rotateY(180deg);
 }
  .front, .back{
- border: solid black 10px;
+ border: solid gray 10px;
  transition: 1s;
  display: flex;
  align-items: center;
@@ -42,14 +45,38 @@ input:focus {
  position: absolute;
  top: 0%;
  left: 0%;
- height: 150px;
- width: 100px;
- background-color: white;
+ height: 100px;
+ width: 150px;
+ background-image: radial-gradient(white, gray);
  backface-visibility: hidden;
+}
+ 
+ .check{
+ transform: rotateY(360deg);
+ animation: wobble .5s linear .8s 2;
+}
+ .correctdesign {
+ color: white;
+ font-family: Algerian;
+ text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+ background-image: radial-gradient(white, lightgreen);
+}
+ .wrongdesign {
+ color: white;
+ font-family: Algerian;
+ text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+ background-image: radial-gradient(white, red);
 }
 
  .back {
   transform: rotateY(180deg);
+}
+
+@keyframes wobble {
+0% {transform: rotate(0deg);}
+25% {transform: rotate(10deg);}
+75% {transform: rotate(-10deg);}
+100% {transform: rotate(0deg);}
 }
 
 
@@ -61,14 +88,21 @@ input:focus {
     <input type="text" id="question">Question<br>
     <input type="text" id="answer">Answer<br>
     <input type="text" id="hint">Hint<br>
-<button onclick="makeQuestion()">Create Question</button>
+    <button onclick="makeQuestion()">Create Question</button>
+    <button onclick="savequiz()">Save</button>
+    <button onclick="loadquiz()">Load</button>
 <div id="quiz">
+
 </div>
 </body>
 <footer>
 <script type="text/javascript">
+
+ var questionArray = [];
+ var stringed;
+
  function question(question, hint, answer) {
- thequestion = this;
+ var thequestion = this;
  this.question = question;
  this.hint = hint;
  this.answer = answer;
@@ -78,7 +112,11 @@ input:focus {
  this.cardback = document.createElement("div");
  this.input = document.createElement("input");
  this.check = document.createElement("button");
+ this.delete = document.createElement("button");
+
  this.generateQuestion = function(){
+   
+   this.indexno = questionArray.length;
   
    this.newquestion.classList.add("question");
    document.getElementById("quiz").appendChild(this.newquestion);
@@ -98,20 +136,49 @@ input:focus {
   
    this.check.innerHTML = "Check Answer";
    this.check.onclick = this.checkAnswer;
-   this.check.keydown = function(event) {
-       if (event.key == "Enter") {
-           makeQuestion();
-       }
-   }
    this.newquestion.appendChild(this.check);
+
+   this.delete.innerHTML = "Delete Question";
+   this.delete.onclick = this.deletequestion;
+   this.newquestion.appendChild(this.delete);
   };
  this.checkAnswer = function() {
-   if (thequestion.input.value.toUpperCase() == answer) {
-    document.getElementById("test").innerHTML = "Correct";
+   if (thequestion.input.value.toUpperCase() == thequestion.answer) {
+    thequestion.newcard.classList.add("check");
+    thequestion.cardfront.classList.add("correctdesign");
+    thequestion.cardfront.innerHTML = "Correct!";
+    thequestion.cardfront.style.border = "solid lightgreen 10px"
+    thequestion.cardback.style.border = "solid lightgreen 10px"
+    thequestion.newcard.addEventListener("animationend", function() {
+     thequestion.newcard.classList.remove("check");
+     thequestion.cardfront.classList.remove("correctdesign");
+     thequestion.cardfront.innerHTML = thequestion.question;}); 
+
    } else {
-    document.getElementById("test").innerHTML = "WRONG SUCKA";
+    thequestion.newcard.classList.add("check");
+    thequestion.cardfront.classList.add("wrongdesign");
+    thequestion.cardfront.innerHTML = "WRONG SUCKA!";
+    thequestion.cardfront.style.border = "solid red 10px"
+    thequestion.cardback.style.border = "solid red 10px"
+    thequestion.newcard.addEventListener("animationend", function() {
+     thequestion.newcard.classList.remove("check");
+     thequestion.cardfront.classList.remove("wrongdesign");
+     thequestion.cardfront.innerHTML = thequestion.question;
+     });   
    }
+
   };
+ this.deletequestion = function() {
+    thequestion.newquestion.parentNode.removeChild(thequestion.newquestion);
+    var compareindex = thequestion.indexno;
+    questionArray.splice(thequestion.indexno,1);
+    questionArray.forEach(function(item) { 
+     if (item.indexno > compareindex){  
+      item.indexno = item.indexno - 1;
+      }
+     });
+   }
+   
 }
 function makeQuestion() {
     document.getElementById("question").style.border = "";
@@ -119,11 +186,12 @@ function makeQuestion() {
     var thequestion = document.getElementById("question").value;
     if (thequestion == "") {
         document.getElementById("question").style.border = "solid red .5px";
-        return;
     }
     var theanswer = document.getElementById("answer").value.toUpperCase();
     if (theanswer == "") {
         document.getElementById("answer").style.border = "solid red .5px";
+    }
+    if (thequestion =="" || theanswer == "") {
         return;
     }
     var thehint = document.getElementById("hint").value;
@@ -132,9 +200,32 @@ function makeQuestion() {
     }
 var myquestion = new question(thequestion, thehint, theanswer);
 myquestion.generateQuestion();
+questionArray.push(myquestion);
     document.getElementById("question").value = "";
     document.getElementById("answer").value = "";
     document.getElementById("hint").value = "";
+}
+
+function duplicatequiz(item, index) {
+ var myquestion = new question(item.question, item.hint, item.answer);
+ myquestion.generateQuestion();
+ questionArray.push(myquestion);
+}
+
+function savequiz() {
+ quizJSON = JSON.stringify(questionArray);
+ localStorage.setItem("quizJSON", quizJSON);
+ document.getElementById("test").innerHTML = questionArray.length;
+}
+
+function loadquiz() {
+var questions = document.getElementsByClassName("question");
+for (i = questions.length - 1; i >= 0; i--) {
+questions[i].parentNode.removeChild(questions[i]);
+questionArray.splice(i, 1);
+}
+var parsed = JSON.parse(localStorage.getItem("quizJSON"));
+parsed.forEach(duplicatequiz);
 }
 </script>
 </footer>
