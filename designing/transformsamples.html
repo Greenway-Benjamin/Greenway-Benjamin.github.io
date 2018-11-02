@@ -1,0 +1,215 @@
+<!Doctype HTML>
+<head>
+<style>
+ body{
+background-color: lightskyblue;
+color: white;
+font-size: 25px;
+text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+    .holder {
+        height: 200px;
+        width: 400px;
+    }
+    .mover {
+        height: 120px;
+        width: 120px;
+        background-color: forestgreen;
+        transition: 1s;
+        border: solid black 1px;
+        transform-style: preserve-3d;
+    }
+    .helper {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateY(90deg);
+        background-color: pink;
+    }
+    #matrix:hover .mover {
+        transform: matrix(1, -0.3, 0, 1, 20, 20);
+    }
+    #matrix3d:hover .mover {
+        transform: matrix3d(0.8, 0.5, 0.15, 0, -0.5, 0.71, 0.5, 0, 0.15, -0.5, 0.85, 0, 22.6, -20.3, 101.4, 5);
+    }
+    #translate:hover .mover {
+        transform: translate(50px, 100px);
+    }
+    #translate3d:hover .mover {
+        transform: rotateY(50deg) translate3d(50px, 100px, 100px);
+    }
+    #translateX:hover .mover {
+        transform: translateX(50px);
+    }
+    #translateY:hover .mover {
+        transform: translateY(100px);
+    }
+    #translateZ:hover .mover {
+        transform: rotateY(50deg) translateZ(100px);
+    }
+    #scale:hover .mover {
+        transform: scale(2);
+    }
+    #scale2:hover .mover {
+        transform: scale(2,3);
+    }
+    #scale3d:hover .mover {
+        transform: rotateY(70deg) scale3d(2,3,4);
+    }
+    #scaleX:hover .mover {
+        transform: scaleX(5);
+    }
+    #scaleY:hover .mover {
+        transform: scaleY(5);
+    }
+    #scaleZ:hover .mover {
+        transform: rotateY(50deg) scaleZ(5);
+    }
+    #rotate:hover .mover {
+        transform: rotate(700deg);
+    }
+    #rotate3d:hover .mover {
+        transform: rotate3d(1, 1, 1, 90deg);
+    }
+    #rotateX:hover .mover {
+        transform: rotateX(360deg);
+    }
+    #rotateY:hover .mover {
+        transform: rotateY(360deg);
+    }
+    #rotateZ:hover .mover {
+        transform: rotateZ(360deg);
+    }
+    #skew:hover .mover {
+        transform: skew(50deg, 100deg);
+    }
+    #skewX:hover .mover {
+        transform: skewX(50deg);
+    }
+    #skewY:hover .mover {
+        transform: skewY(100deg);
+    }
+    #perspective:hover .mover {
+        transform: perspective(60px) rotateY(180deg);
+    }
+
+</style>
+</head>
+<body>
+    <div class = "holder" id="matrix">transform: matrix(1, -0.3, 0, 1, 20, 20);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="matrix3d">transform: matrix3d(0.8, 0.5, 0.15, 0, -0.5, 0.71, 0.5, 0, 0.15, -0.5, 0.85, 0, 22.6, -20.3, 101.4, 5)
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="translate">transform: translate(50px, 100px);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="translate3d">transform: rotateY(50deg) translate3d(50px, 100px, 100px);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="translateX">transform: translateX(50px);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="translateY">transform: translateY(100px);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="translateZ">transform: rotateY(50deg) translateZ(100px);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="scale">transform: scale(2);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="scale2">transform: scale(2,3);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="scale3d">transform: rotateY(50deg) scale3d(2,3,4);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="scaleX">transform: scaleX(5);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="scaleY">transform: scaleY(5);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="scaleZ">transform: rotateY(50deg) scaleZ(5);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="rotate">transform: rotate(700deg);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="rotate3d">transform: rotate3d(1, 1, 1, 90deg);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="rotateX">transform: rotateX(360deg);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="rotateY">transform: rotateY(360deg);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="rotateZ">transform: rotateZ(360deg);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="skew">transform: skew(50deg, 100deg);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="skewX">transform: skewX(50deg);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="skewY">transform: skewY(100deg);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+    <div class = "holder" id="perspective">transform: perspective(60px) rotateY(180deg);
+        <div class = "mover">
+            <div class = "helper"></div>
+        </div>
+    </div><br>
+</body>
+<footer>
+<script type="text/javascript">
+
+</script>
+</footer>
+</html>

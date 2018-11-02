@@ -27,10 +27,10 @@ input:focus {
  border: solid black .5px;
 }
  .card:hover .back{
- transform: rotateY(0deg);
+ transform: rotateY(0deg) translateZ(-50px);
 }
  .card:hover .front{
- transform: rotateY(180deg);
+ transform: rotateY(180deg) translateZ(50px);
 }
  .front, .back{
  border: solid gray 10px;
@@ -67,7 +67,10 @@ input:focus {
 }
 
  .back {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(-50px);
+}
+ .front {
+  transform: rotateY(0deg) translateZ(50px);
 }
 
 @keyframes wobble {
@@ -82,7 +85,7 @@ input:focus {
 </head>
 <body>
 <header>
-    <h1>Web App Development</h1>
+    <h1>Mobile App Development</h1>
 </header>
     <ul id="navbar">
         <li><a href="/">Home</a></li>
