@@ -2,7 +2,7 @@
 <head>
     <link rel="stylesheet" href="/styles.css">
 <style>
-
+/*Question and card styles*/
  .question {
  float: left;
  position: relative;
@@ -26,12 +26,14 @@ input:focus {
  button {
  border: solid black .5px;
 }
+    /*Hover states for back and front, front faces back and back faces front*/
  .card:hover .back{
  transform: rotateY(0deg) translateZ(-50px);
 }
  .card:hover .front{
  transform: rotateY(180deg) translateZ(50px);
 }
+    /*front and back normal styles, will be hidden when facing the back*/
  .front, .back{
  border: solid gray 10px;
  transition: 1s;
@@ -48,7 +50,7 @@ input:focus {
  background-image: radial-gradient(white, gray);
  backface-visibility: hidden;
 }
- 
+ /*Transition for checking answer*/
  .check{
  transform: rotateY(360deg);
  animation: wobble .5s linear .8s 2;
@@ -65,7 +67,7 @@ input:focus {
  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
  background-image: radial-gradient(white, red);
 }
-
+/*Back faces the back so is hidden, uses Z translate to rotate rather than flip*/
  .back {
   transform: rotateY(180deg) translateZ(-50px);
 }
@@ -73,6 +75,7 @@ input:focus {
   transform: rotateY(0deg) translateZ(50px);
 }
 
+    /*Animation keyframes for checked answer*/
 @keyframes wobble {
 0% {transform: rotate(0deg);}
 25% {transform: rotate(10deg);}
@@ -109,11 +112,12 @@ input:focus {
 </body>
 <footer>
 <script type="text/javascript">
-
+//Create array for storage
  var questionArray = [];
- var stringed;
 
+//Question object creation
  function question(question, hint, answer) {
+//Create variables and divs
  var thequestion = this;
  this.question = question;
  this.hint = hint;
@@ -126,6 +130,7 @@ input:focus {
  this.check = document.createElement("button");
  this.delete = document.createElement("button");
 
+//Create the card, add elements to html, and fill in text
  this.generateQuestion = function(){
    
    this.indexno = questionArray.length;
@@ -154,6 +159,7 @@ input:focus {
    this.delete.onclick = this.deletequestion;
    this.newquestion.appendChild(this.delete);
   };
+     //Check answer in input box, if correct give correct, if not incorrect
  this.checkAnswer = function() {
    if (thequestion.input.value.toUpperCase() == thequestion.answer) {
     thequestion.newcard.classList.add("check");
@@ -180,6 +186,7 @@ input:focus {
    }
 
   };
+     //Delete question, change index number of all questions above deleted question
  this.deletequestion = function() {
     thequestion.newquestion.parentNode.removeChild(thequestion.newquestion);
     var compareindex = thequestion.indexno;
@@ -192,6 +199,9 @@ input:focus {
    }
    
 }
+    
+    //Function to make question. Change borders of 'question' and 'answer' to red if no input
+    //Function will not make a question without question or answer input
 function makeQuestion() {
     document.getElementById("question").style.border = "";
     document.getElementById("answer").style.border = "";
@@ -210,6 +220,7 @@ function makeQuestion() {
     if (thehint == "") {
         thehint = "No hint";
     }
+    //Create the question and reset input fields
 var myquestion = new question(thequestion, thehint, theanswer);
 myquestion.generateQuestion();
 questionArray.push(myquestion);
@@ -218,18 +229,21 @@ questionArray.push(myquestion);
     document.getElementById("hint").value = "";
 }
 
-function duplicatequiz(item, index) {
+    //Create question from template
+function duplicatequiz(item) {
  var myquestion = new question(item.question, item.hint, item.answer);
  myquestion.generateQuestion();
  questionArray.push(myquestion);
 }
 
+    //Save quiz as JSON object in local storage
 function savequiz() {
  quizJSON = JSON.stringify(questionArray);
  localStorage.setItem("quizJSON", quizJSON);
  document.getElementById("test").innerHTML = questionArray.length;
 }
 
+    //Load quiz from JSON object in local storage
 function loadquiz() {
 var questions = document.getElementsByClassName("question");
 for (i = questions.length - 1; i >= 0; i--) {
