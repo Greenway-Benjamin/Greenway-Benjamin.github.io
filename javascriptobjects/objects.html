@@ -1,1 +1,108 @@
+<!Doctype HTML>
+<head>
+<style>
+ body{
+background-color: blue;
+color: white;
+}
 
+div[id='Custom Object'] {
+display: inline-block;
+}
+
+.buttonform{
+display: inline-block;
+}
+
+.popup-form{
+visibility: hidden;
+color: black;
+background-color: white;
+border: 3px solid #f1f1f1;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Javascript Objects</h1>
+<h3>A Preset object</h3>
+<button onclick="getPresetObject()">Get Object</button>
+<div id="Preset Object"></div>
+
+<h3>Object Created by a Function</h3>
+What is the item? &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="item"><br>
+What is the purpose? &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="purpose"><br>
+Then why does it exist? &nbsp&nbsp&nbsp&nbsp<input type="text" id="why"><br>
+What color should it be? &nbsp&nbsp&nbsp<input type="text" id="color"> <br>
+<button onclick="makeCustomObject()">Make My Object</button><br>
+<div id="Custom Object"></div>
+
+<h3> Now Let's have some fun!</h3>
+<div class="allbuttonforms">
+<div class="buttonform"><button onclick="expandbox('squareform')">Make Square</button>
+     <div id="squareform" class="popup-form">
+          Name: <input type="text" id="squarename"><br>
+          Speed: <input type="text" id="squarespeed"><br>
+          <button onclick="makeSquare()">Make Object</button>
+          <button onclick="closebox('squareform')">Cancel</button><br>
+     </div>
+</div> 
+<div class="buttonform"><button onclick="expandbox('circleform')">Make Circle</button>
+     <div id="circleform" class="popup-form">
+          Name: <input type="text" id="circlename"><br>
+          Speed: <input type="text" id="circlespeed"><br>
+          <button onclick="makeCircle()">Make Object</button>
+          <button onclick="closebox('circleform')">Cancel</button><br>
+     </div>
+</div> 
+<div class="buttonform"><button onclick="expandbox('triangleform')">Make Triangle</button>
+     <div id="triangleform" class="popup-form">
+          Name: <input type="text" id="trianglename"><br>
+          Speed: <input type="text" id="trianglespeed"><br>
+          <button onclick="makeTriangle()">Make Object</button>
+          <button onclick="closebox('triangleform')">Cancel</button><br>
+     </div>
+</div> 
+</div>
+<div id="shapestage">
+</div>
+
+</body>
+<footer>
+
+<script type="text/javascript">
+
+function getPresetObject() {
+
+var anobject = {item: "Thing", purpose: "None", thenwhy: "Because I want to exist"};
+document.getElementById("Preset Object").innerHTML = "This is written using an object. <br> The object is called " + anobject.item + ". <br> The object's purpose is " + anobject.purpose + ". <br> The reason this exists is " + anobject.thenwhy + ".";
+
+}
+
+function makeCustomObject() {
+var theThing = new aThing(document.getElementById("item").value, document.getElementById("purpose").value, document.getElementById("why").value, document.getElementById("color").value);
+
+document.getElementById("Custom Object").innerHTML = "Your item is a " + theThing.item + ". <br>The purpose is " + theThing.purpose + ". <br>It exists because "+ theThing.why + ". <br>If you named a color properly, the background of this text will be that color.";
+document.getElementById("Custom Object").style.backgroundColor = theThing.color;
+
+}
+
+function aThing(item, purpose, why, color) {
+this.item = item;
+this.purpose = purpose;
+this.why = why;
+this.color = color;
+}
+
+function expandbox(elementid) {
+document.getElementById(elementid).style.visibility= "visible";
+}
+
+function closebox(elementid) {
+document.getElementById(elementid).style.visibility = "hidden";
+}
+</script>
+
+</footer>
+</html>
