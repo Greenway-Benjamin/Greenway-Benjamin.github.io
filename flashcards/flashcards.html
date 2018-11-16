@@ -101,6 +101,7 @@ input:focus {
         <li><a href="/designing/transformsamples.html">Transform Samples</a></li>
     </ul>
 <h3>Flashcards</h3>
+    <button onclick="loadajax()">LOAD SAMPLES</button>
 <div id = "test">Test</div>
     <input type="text" id="question">Question<br>
     <input type="text" id="answer">Answer<br>
@@ -255,6 +256,25 @@ questionArray.splice(i, 1);
 var parsed = JSON.parse(localStorage.getItem("quizJSON"));
 parsed.forEach(duplicatequiz);
 }
+    
+    function loadajax() {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                var questions = document.getElementsByClassName("question");
+                for (i = questions.length - 1; i >= 0; i--) {
+                questions[i].parentNode.removeChild(questions[i]);
+                questionArray.splice(i, 1);
+                }
+                questionArray = JSON.parse(this.responseText);
+                questionArray.forEach(duplicatequiz);
+            }
+        }
+        var url = "https://greenway-benjamin.github.io/flashcards/samples.json";
+        request.open("GET", url, true);
+        request.send();
+        
+    }
 </script>
 </footer>
 </html>
