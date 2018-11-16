@@ -1,1 +1,225 @@
+<!Doctype HTML>
+<head>
+    <link rel="stylesheet" href="/styles.css">
+<style>
+html, body{
+height:100%;
+margin: 0;
+}
+#wholepage {
+position: absolute;
+width: 100%;
+}
+#sample {
+  height:750px;
+  width:500px;
+  background-color:white;
+  color:black;
+  float:left;
+  border: 2px solid black;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+#selector {
+  float:left;
+  width:300px;
+}
+#fontsizer {
+text-align: right;
+}
+.font {
+  color: black;
+  font-size: 1em;
+  border: 2px solid black;
+  background-color: lightgray;
+  border-radius: 50px;
+  margin:3px;
+  user-select: none;
+}
+.font:hover {
+  border:3px solid white;
+  margin:2px;
+}
+.font#Luminari{
+  font-family: "Luminari", fantasy;
+}
+.font#AppleChancery{
+  font-family: "Apple Chancery", cursive;
+}
+.font#OCRASTD{
+  font-family: "OCR A Std", monospace;
+}
+.color, .color2 {
 
+  border-radius: 50px;
+  border: 2px solid black;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  margin:3px;
+}
+.color:hover, .color2:hover {
+ border:3px solid white;
+ margin:2px;
+}
+.color#Black, .color2#BlackT{
+background-color: Black;
+border: 2px solid white;
+}
+.color#Black:hover, .color2#BlackT:hover{
+border: 3px solid white;
+}
+.color#White, .color2#WhiteT{
+background-color: White;
+}
+.color#Orange, .color2#OrangeT{
+background-color: Orange;
+}
+.color#Blue, .color2#BlueT{
+background-color: Blue;
+}
+.color#Green, .color2#GreenT{
+background-color: Green;
+}
+.color#Red, .color2#RedT{
+background-color: Red;
+}
+.color#Violet, .color2#VioletT{
+background-color: Violet;
+}
+.color#Purple, .color2#PurpleT{
+background-color: Purple;
+}
+.color#Brown, .color2#BrownT{
+background-color: Brown;
+}
+.color#Yellow, .color2#YellowT{
+background-color: Yellow;
+}
+.color#Cyan, .color2#CyanT{
+background-color: Cyan;
+}
+.color#Pink, .color2#PinkT{
+background-color: Pink;
+}
+
+</style>
+</head>
+<body>
+<header>
+    <h1>Mobile App Development</h1>
+</header>
+    <ul id="navbar">
+        <li><a href="/">Home</a></li>
+        <li><a href="/animationtrig/animations.html">Animations</a></li>
+        <li><a href="/animationtrig/transitions.html">Transitions</a></li>
+        <li><a href="/javascriptbasics/basics.html">Javascript Basics</a></li>
+        <li><a href="/dommanipulation/dom.html">DOM Manipulation</a></li>
+        <li><a href="/flashcards/flashcards.html">Flashcards</a></li>
+        <li><a href="/designing/transitionsamples.html">Transition Samples</a></li>
+        <li><a href="/designing/transformsamples.html">Transform Samples</a></li>
+    </ul>
+<div id = "wholepage">
+<h1>Design the colors how you want!</h1>
+<h3>Sample</h3>
+<div id = "sample">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</div>
+<button onclick = "changepage()">Change page</button>
+<div id = "selector">
+<h3> Background Color</h3>
+<span class = "color" id = "Black"></span>
+<span class = "color" id = "White"></span>
+<span class = "color" id = "Orange"></span>
+<span class = "color" id = "Blue"></span>
+<span class = "color" id = "Green"></span>
+<span class = "color" id = "Red"></span>
+<span class = "color" id = "Violet"></span>
+<span class = "color" id = "Purple"></span>
+<span class = "color" id = "Brown"></span>
+<span class = "color" id = "Yellow"></span>
+<span class = "color" id = "Cyan"></span>
+<span class = "color" id = "Pink"></span>
+<br>
+<h3>Text Color</h3>
+<span class = "color2" id = "BlackT"></span>
+<span class = "color2" id = "WhiteT"></span>
+<span class = "color2" id = "OrangeT"></span>
+<span class = "color2" id = "BlueT"></span>
+<span class = "color2" id = "GreenT"></span>
+<span class = "color2" id = "RedT"></span>
+<span class = "color2" id = "VioletT"></span>
+<span class = "color2" id = "PurpleT"></span>
+<span class = "color2" id = "BrownT"></span>
+<span class = "color2" id = "YellowT"></span>
+<span class = "color2" id = "CyanT"></span>
+<button class = "color2" id = "PinkT"></button>
+<h3>Font and Font Size</h3>
+<button class = "font" id = "Luminari">Luminari</button>
+<button class = "font" id = "AppleChancery">Apple Chancery</button>
+<button class = "font" id = "OCRASTD">OCR A Std</button>
+<button class = "font" id = "Luminari">Luminari</button>
+<button class = "font" id = "Luminari">Luminari</button>
+<button class = "font" id = "Luminari">Luminari</button>
+<button class = "font" id = "Luminari">Luminari</button>
+<button class = "font" id = "Luminari">Luminari</button>
+<button class = "font" id = "Luminari">Luminari</button><br>
+<input type="text" id="fontsizer">pt
+</div>
+</div>
+</body>
+<footer>
+<script type="text/javascript">
+var colors = document.getElementsByClassName('color');
+var colors2 = document.getElementsByClassName('color2');
+var fonts = document.getElementsByClassName('font');
+var background = 'White';
+var textcolor = 'Black';
+var font;
+var fontsize;
+
+for (i = 0; i < colors.length; i++) {
+colors[i].addEventListener("click", function() {
+background = this.id;
+document.getElementById('sample').style.backgroundColor = background;
+});
+}
+
+for (i = 0; i < colors2.length; i++) {
+colors2[i].addEventListener("click", function() {
+textcolor = this.id.substr(0, this.id.length - 1);
+document.getElementById('sample').style.color = textcolor;
+});
+}
+
+for (i = 0; i < fonts.length; i++) {
+fonts[i].addEventListener("click", function() {
+font = getComputedStyle(this).fontFamily;
+document.getElementById('sample').style.fontFamily = font;
+document.getElementById('test').innerHTML = font;
+});
+}
+
+document.getElementById('fontsizer').addEventListener("keyup",function() {
+fontsize = this.value + 'pt';
+document.getElementById('sample').style.fontSize= fontsize;
+document.getElementById('test').innerHTML = fontsize;
+});
+
+function changepage() {
+var style = document.createElement('style');
+style.type = 'text/css';
+style.innerHTML = '.createdClass{ color:' + textcolor
+                             + '; background-color:' + background
+                             + '; font-family:' + font
+                             + '; font-size:' + fontsize
+                             + ';';
+document.getElementsByTagName('head')[0].appendChild(style);
+document.getElementById('wholepage').className = 'createdClass';
+}
+function test(){
+document.getElementById('test').innerHTML = getComputedStyle(document.getElementById('Luminari')).fontFamily;
+}
+</script>
+</footer>
+</html>
