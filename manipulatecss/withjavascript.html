@@ -45,6 +45,9 @@ text-align: right;
 .font#OCRASTD{
   font-family: "OCR A Std", monospace;
 }
+.font#Georgia{
+  font-family: "Georgia", serif;
+}
 .color, .color2 {
 
   border-radius: 50px;
@@ -102,6 +105,7 @@ background-color: Pink;
 </style>
 </head>
 <body>
+    <div id="wholepage">
 <header>
     <h1>Mobile App Development</h1>
 </header>
@@ -116,13 +120,13 @@ background-color: Pink;
         <li><a href="/designing/transformsamples.html">Transform Samples</a></li>
         <li><a href="/manipulatecss/withjavascript.html">Sample Color Designer</a></li>
     </ul>
-<div id = "wholepage">
 <h1>Design the colors how you want!</h1>
 <h3>Sample</h3>
 <div id = "sample">
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 </div>
 <button onclick = "changepage()">Change page</button>
+<button onclick = "removechanges()">Remove changes</button>
 <div id = "selector">
 <h3> Background Color</h3>
 <span class = "color" id = "Black"></span>
@@ -150,17 +154,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <span class = "color2" id = "BrownT"></span>
 <span class = "color2" id = "YellowT"></span>
 <span class = "color2" id = "CyanT"></span>
-<button class = "color2" id = "PinkT"></button>
+<span class = "color2" id = "PinkT"></span>
 <h3>Font and Font Size</h3>
 <button class = "font" id = "Luminari">Luminari</button>
 <button class = "font" id = "AppleChancery">Apple Chancery</button>
 <button class = "font" id = "OCRASTD">OCR A Std</button>
-<button class = "font" id = "Luminari">Luminari</button>
-<button class = "font" id = "Luminari">Luminari</button>
-<button class = "font" id = "Luminari">Luminari</button>
-<button class = "font" id = "Luminari">Luminari</button>
-<button class = "font" id = "Luminari">Luminari</button>
-<button class = "font" id = "Luminari">Luminari</button><br>
+<button class = "font" id = "Georgia">Georgia</button><br>
 <input type="text" id="fontsizer">pt
 </div>
 </div>
@@ -193,14 +192,12 @@ for (i = 0; i < fonts.length; i++) {
 fonts[i].addEventListener("click", function() {
 font = getComputedStyle(this).fontFamily;
 document.getElementById('sample').style.fontFamily = font;
-document.getElementById('test').innerHTML = font;
 });
 }
 
 document.getElementById('fontsizer').addEventListener("keyup",function() {
 fontsize = this.value + 'pt';
 document.getElementById('sample').style.fontSize= fontsize;
-document.getElementById('test').innerHTML = fontsize;
 });
 
 function changepage() {
@@ -214,8 +211,9 @@ style.innerHTML = '.createdClass{ color:' + textcolor
 document.getElementsByTagName('head')[0].appendChild(style);
 document.getElementById('wholepage').className = 'createdClass';
 }
-function test(){
-document.getElementById('test').innerHTML = getComputedStyle(document.getElementById('Luminari')).fontFamily;
+function removechanges() {
+    document.getElementById('wholepage').classList.remove('createdClass');
+    document.getElementById('sample').style = "inherit";
 }
 </script>
 </footer>
