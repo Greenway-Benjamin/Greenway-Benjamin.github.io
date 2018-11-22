@@ -1,1 +1,232 @@
+<!Doctype HTML>
+<head>
+<style>
+ body{
+background-color: lightskyblue;
+color: white;
+font-size: 25px;
+text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+justify-content: center;
+align-items: center;
+}
+@keyframes dance {
+  0% {transform: rotate(-50deg) rotateX(0deg) ; transform-origin: bottom;}
+  100% {transform: rotate(-50deg) rotateX(180deg) ; transform-origin: bottom;}
+  }
+#face {
+left: 300px;
+top: 247 px;
+height: 100px;
+width: 100px;
+border-radius: 100px;
+background-color: yellow;
+display: flex;
+position: relative;
+}
+#righteye, #lefteye {
+background-color: white;
+height: 20px;
+width: 20px;
+border-radius: 20px;
+border: solid black 2px;
+position: absolute;
+}
+#righteye {
+top: 25px;
+left: 60px;
+}
+#lefteye{
+top: 25px;
+left: 20px;
+}
+.pupil {
+height: 10px;
+width: 10px;
+border-radius: 5px;
+background-color: black;
+position: absolute;
+top: 25%;
+left: 25%;
+}
 
+#smile {
+left: 30%;
+width: 40px;
+height: 15px;
+border-bottom: 2px solid black;
+border-left: 2px solid black;
+border-right: 2px solid black;
+border-radius: 0px 0px 50px 50px;
+top: 65px;
+
+position: relative;
+}
+#gasp {
+height: 25px;
+width: 25px;
+background-color: black;
+border-radius: 20px;
+border: solid black 2px;
+position: absolute;
+top: 60px;
+left: 37.5px;
+visibility: hidden;
+}
+#dancer {
+display: flex;
+position: relative;
+height: 100px;
+}
+#head {
+height: 25px;
+width: 25px;
+border-radius: 25px;
+background-color: black;
+position: absolute;
+left: 20px
+}
+#torso {
+height: 50px;
+width: 5px;
+background-color: black;
+border-radius: 15px;
+position: absolute;
+left: 35px;
+top: 10px;
+transform: rotate(-15deg);
+}
+.arm, .leg {
+height: 30px;
+width: 5px;
+background-color: black;
+border-radius: 15px;
+position: absolute;
+}
+#leftarm {
+top: 10px;
+left: 36px;
+transform: rotate(-50deg);
+position: absolute;
+}
+.startDance{
+animation: dance .5s 10 alternate linear;
+}
+
+#rightarm {
+top: 25px;
+left: 47px;
+transform: rotate(120deg);
+}
+#leftleg {
+top: 55px;
+left: 32px;
+transform: rotate(40deg);
+}
+#rightleg {
+top: 55px;
+left: 41px;
+}
+
+</style>
+</head>
+<body>
+<p>The face works with both touchmove and mousemove</p>
+<div id = "box"></div>
+<div id = "face">
+<div id = "lefteye">
+<div id = "leftpupil" class = "pupil"></div>
+</div>
+<div id = "righteye">
+<div id = "rightpupil" class = "pupil"></div>
+</div>
+<div id = "smile"></div>
+<div id = "gasp"></div>
+
+</div>
+<div id = "test"></div>
+<div id = "tester"></div>
+<p>Here is a lovely dancer! When you click the button he will dance with music. There are event listeners for when the animation starts and ends to play and pause the music. If you stop the dancer manually, the music will never stop (or at least until you play him again and let him stop on his own) because that does not trigger the animationend. (controls are there to show what's happening)</p>
+<div id = "dancer">
+   <div id = "head"></div>
+   <div id = "leftarm" class = "arm"></div>
+   <div id = "rightarm" class = "arm"></div>
+   <div id = "leftleg" class = "leg"></div>
+   <div id = "rightleg" class = "leg"></div>
+   <div id = "torso"></div>
+</div>
+
+<button id = "dancebutton" onclick="dance()">Dance!</button><br>
+
+<audio controls loop id = "discosong" src="http://greenway-benjamin.github.io/javascriptevents/Disco.mp3"></audio> <br>
+<p>Here's an iframe for a youtube video </p>
+<iframe width="640" height="360" src="https://www.youtube.com/embed/0OyoBm9bnQg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</body>
+<footer>
+<script type="text/javascript">
+
+var pupils = document.getElementsByClassName('pupil');
+var face = document.getElementById('face');
+
+
+var leftxorigin = pupils[0].getBoundingClientRect().left;
+var leftyorigin = pupils[0].getBoundingClientRect().top;
+var rightxorigin = pupils[1].getBoundingClientRect().left;
+var rightyorigin = pupils[1].getBoundingClientRect().top;
+
+
+face.addEventListener('mouseover',function(){gasp()});
+
+function gasp() {
+document.getElementById('gasp').style.visibility = 'visible';
+document.getElementById('smile').style.visibility = 'hidden';
+}
+face.addEventListener('mouseout',function(){stopgasp()});
+
+function stopgasp() {
+document.getElementById('gasp').style.visibility = 'hidden';
+document.getElementById('smile').style.visibility = 'visible';
+}
+document.addEventListener('mousemove',function(event) { moveeyes(event)});
+document.addEventListener('touchmove',function(event) { moveeyes(event)});
+
+function moveeyes(event) {
+var xcoord = event.clientX;
+var ycoord = event.clientY;
+var pupil0x = (xcoord - leftxorigin)  / (xcoord / 1.5) * 50 + 25;
+var pupil0y = (ycoord - leftyorigin)  / (ycoord / 1.5) * 50 + 25;
+var pupil1x = (xcoord - rightxorigin) / (xcoord / 1.5) * 50 + 25;
+var pupil1y = (ycoord - rightyorigin) / (ycoord / 1.5) * 50 + 25;
+document.getElementById('test').innerHTML = 'X and Y coordinates of cursor: ' + xcoord + 'X ' + ycoord + 'Y.';
+
+pupils[0].style.left = Math.min(Math.max(pupil0x, 0), 50) + '%';
+pupils[0].style.top  = Math.min(Math.max(pupil0y, 0), 50) + '%';
+pupils[1].style.left = Math.min(Math.max(pupil1x, 0), 50) + '%';
+pupils[1].style.top  = Math.min(Math.max(pupil1y, 0), 50) + '%';
+
+document.getElementById('tester').innerHTML = 'Left pupil % left is: ' + pupils[0].style.left
+}
+
+var audiothing = document.getElementById('discosong');
+audiothing.volume = .3;
+document.getElementById('leftarm').addEventListener('animationstart', function() {
+audiothing.play();
+});
+document.getElementById('leftarm').addEventListener('animationend', function() {
+audiothing.pause();
+dance();
+});
+
+function dance() {
+var dancing = document.getElementById('dancebutton');
+if (dancing.innerHTML == 'Dance!') {
+dancing.innerHTML = 'Stop Dancing!';
+document.getElementById('leftarm').classList.add('startDance');
+} else {
+dancing.innerHTML = 'Dance!';
+document.getElementById('leftarm').classList.remove('startDance');
+}
+}
+
+</script>
+</footer>
+</html>
