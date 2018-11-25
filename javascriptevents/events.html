@@ -190,10 +190,25 @@ function stopgasp() {
 document.getElementById('gasp').style.visibility = 'hidden';
 document.getElementById('smile').style.visibility = 'visible';
 }
-document.addEventListener('touchmove',function(event) { moveeyes(event)});
+document.addEventListener('touchmove',function(event) { touchmoveeyes(event)});
+document.addEventListener('mousemove',function(event) { moveeyes(event)});
 
+function touchmoveeyes(event) {
+var xcoord = event.touches[0].clientX;
+var ycoord = event.touches[0].clientY;
+var pupil0x = (xcoord - leftxorigin)  / (xcoord / 1.5) * 50 + 25;
+var pupil0y = (ycoord - leftyorigin)  / (ycoord / 1.5) * 50 + 25;
+var pupil1x = (xcoord - rightxorigin) / (xcoord / 1.5) * 50 + 25;
+var pupil1y = (ycoord - rightyorigin) / (ycoord / 1.5) * 50 + 25;
+document.getElementById('test').innerHTML = 'X and Y coordinates of cursor: ' + xcoord + 'X ' + ycoord + 'Y.';
 
+pupils[0].style.left = Math.min(Math.max(pupil0x, 0), 50) + '%';
+pupils[0].style.top  = Math.min(Math.max(pupil0y, 0), 50) + '%';
+pupils[1].style.left = Math.min(Math.max(pupil1x, 0), 50) + '%';
+pupils[1].style.top  = Math.min(Math.max(pupil1y, 0), 50) + '%';
 
+document.getElementById('tester').innerHTML = 'Left pupil % left is: ' + pupils[0].style.left
+}
 function moveeyes(event) {
 var xcoord = event.clientX;
 var ycoord = event.clientY;
