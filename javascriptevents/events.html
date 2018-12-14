@@ -179,14 +179,12 @@ var rightyorigin = pupils[1].getBoundingClientRect().top;
 
 
 face.addEventListener('mouseover',function(){gasp()});
-face.addEventListener('touchenter',function(){gasp()});
     
 function gasp() {
 document.getElementById('gasp').style.visibility = 'visible';
 document.getElementById('smile').style.visibility = 'hidden';
 }
 face.addEventListener('mouseout',function(){stopgasp()});
-face.addEventListener('touchleave',function(){stopgasp()});
     
 function stopgasp() {
 document.getElementById('gasp').style.visibility = 'hidden';
