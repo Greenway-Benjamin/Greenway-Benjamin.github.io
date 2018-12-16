@@ -19,15 +19,16 @@
     left: 10%;
 }
  #pulltab {
-    height: 20%;
+    height: 10%;
     width: 30%;
     position: absolute;
     border: solid black 1px;
     float: right;
     background-color: red;
-    Z-index: 1;
+    Z-index: -1;
     cursor: pointer;
     left: 75%;
+    text-align: right;
 }
     #lovelypictures {
         height: 120%;
@@ -35,6 +36,7 @@
         position: absolute;
         left: -10%;
         top: -10%;
+        border-radius: 100%;
     }
  #innercircle {
     height: 95%;
@@ -251,7 +253,7 @@ var spinner = document.getElementById('pointerbox');
 spinner.addEventListener('transitionend',function(){
 spinner.style.transitionDuration = '0s';
 spinner.style.transform = 'rotate(' + spindeg % 360 + 'deg)';
-document.getElementById(audios[rando]).play();
+document.getElementById(profiles[profileno].audios[rando]).play();
 });
 
 
@@ -294,10 +296,9 @@ going = 0;
 }
     var rando;
     var spindeg;
-    
-    var audios = ['goose', 'turkey', 'mouse', 'goat', 'music', 'quiz', 'cow', 'pig', 'rooster', 'sheep'];
     function spinSpinner() {
-rando = Math.floor(Math.random() * 10);
+rando = numbers.length - 2;
+    //Math.floor(Math.random() * numbers.length);
 spindeg = numbers[rando] + 14760;
 spinner.style.transitionDuration = '3s';
 spinner.style.transform = 'rotate(' + spindeg + 'deg)';
