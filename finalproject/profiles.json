@@ -12,5 +12,12 @@
     "pictures":"display2.png",
     "audios":["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],
     "audiofiles":["A.m4a","B.m4a","C.m4a","D.m4a","E.m4a","F.m4a","G.m4a","H.m4a","I.m4a","J.m4a","K.m4a","L.m4a","M.m4a","N.m4a","O.m4a","P.m4a","Q.m4a","R.m4a","S.m4a","T.m4a","U.m4a","V.m4a","W.m4a","X.m4a","Y.m4a","Z.m4a"]
+    },
+    {
+    "degrees":[45,105,165,225,285,345],
+    "spinnerobj":"fatarrowred.png",
+    "pictures":"display3.png",
+    "audios":["violin","trumpet","drum","guitar","xylophone","saxophone"],
+    "audiofiles":["Violin.mp3","Trumpet.mp3","Drum.mp3","Guitar.mp3","Xylophone.mp3","Saxophone.mp3"]
     }
 ]
