@@ -1,0 +1,8 @@
+
+    {
+    "degrees":[24,50,84,118,146,210,244,278,306,336],
+    "spinnerobj":[24,50,84,118,146,210,244,278,306,336],
+    "pictures":"fatarrowblue.png",
+    "audios":["goose","turkey","mouse","goat","music","quiz","cow","pig","rooster","sheep"],
+    "audiofiles":["Goose.mp3","Turkey.mp3","Rat.mp3","Goat.mp3","Music.mp3","Quiz.m4a","Cow.mp3","Pig.mp3","Rooster.mp3","Sheep.wav"]
+    }

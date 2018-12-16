@@ -74,12 +74,69 @@
  top: 40%;
  background-color: lightblue;
  z-index: 1;
+ font-size: 12pt;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ cursor: pointer;
 }
  #leftbutton {
- left: -15%;
+ left: -20%;
 }
  #rightbutton {
- left: 73%
+ left: 78%
+}
+
+.forward {
+animation: transitionF 5s linear 1;
+}
+
+.backward {
+animation: transitionB 5s linear 1;
+}
+
+@keyframes transitionF {
+5% {transform: rotateY(10deg) rotateZ(10deg);}
+10% {transform: rotateY(21deg) rotateZ(21deg);}
+15%{transform: rotateY(42deg) rotateZ(42deg);}
+20%{transform: rotateY(84deg) rotateZ(84deg);}
+25%{transform: rotateY(168deg) rotateZ(168deg);}
+30%{transform: rotateY(337deg) rotateZ(337deg);}
+35%{transform: rotateY(675deg) rotateZ(675deg);}
+40%{transform: rotateY(1351deg) rotateZ(1351deg);}
+45%{transform: rotateY(2702deg) rotateZ(2702deg);}
+50%{transform: rotateY(5405deg) rotateZ(5405deg);}
+55%{transform: rotateY(8108deg) rotateZ(8108deg);}
+60%{transform: rotateY(9459deg) rotateZ(9459deg);}
+65%{transform: rotateY(10135deg) rotateZ(10135deg);}
+70%{transform: rotateY(10473deg) rotateZ(10473deg);}
+75%{transform: rotateY(10642deg) rotateZ(10642deg);}
+80%{transform: rotateY(10726deg) rotateZ(10726deg);}
+85%{transform: rotateY(10769deg) rotateZ(10769deg);}
+90%{transform: rotateY(10790deg) rotateZ(10790deg);}
+100% {transform: rotateY(10800deg) rotateZ(10800deg);}
+}
+
+@keyframes transitionB {
+5% {transform: rotateY(-10deg) rotateZ(-10deg);}
+10% {transform: rotateY(-21deg) rotateZ(-21deg);}
+15%{transform: rotateY(-42deg) rotateZ(-42deg);}
+20%{transform: rotateY(-84deg) rotateZ(-84deg);}
+25%{transform: rotateY(-168deg) rotateZ(-168deg);}
+30%{transform: rotateY(-337deg) rotateZ(-337deg);}
+35%{transform: rotateY(-675deg) rotateZ(-675deg);}
+40%{transform: rotateY(-1351deg) rotateZ(-1351deg);}
+45%{transform: rotateY(-2702deg) rotateZ(-2702deg);}
+50%{transform: rotateY(-5405deg) rotateZ(-5405deg);}
+55%{transform: rotateY(-8108deg) rotateZ(-8108deg);}
+60%{transform: rotateY(-9459deg) rotateZ(-9459deg);}
+65%{transform: rotateY(-10135deg) rotateZ(-10135deg);}
+70%{transform: rotateY(-10473deg) rotateZ(-10473deg);}
+75%{transform: rotateY(-10642deg) rotateZ(-10642deg);}
+80%{transform: rotateY(-10726deg) rotateZ(-10726deg);}
+85%{transform: rotateY(-10769deg) rotateZ(-10769deg);}
+90%{transform: rotateY(-10790deg) rotateZ(-10790deg);}
+100% {transform: rotateY(-10800deg) rotateZ(-10800deg);}
 }
 
 </style>
@@ -90,8 +147,8 @@
 <div id = "thetoy">
   <div id = "outercircle">
   <div id = "pulltab">PULL ME >></div>
-   <div id = "leftbutton"></div>
-   <div id = "rightbutton"></div>
+   <div id = "leftbutton" onclick = "transitionBack()">LAST</div>
+   <div id = "rightbutton" onclick = "transitionForward()">NEXT</div>
    <div id = "innercircle">
        <img id = "lovelypictures" src = "display1.png">
     <div id = "innerinnercircle">
@@ -113,6 +170,49 @@
 </body>
 <footer>
 <script type="text/javascript">
+    var profiles;
+    var profileno = localStorage.getItem("profileNo");
+    loadajax();
+    loadprofile();
+    function loadajax() {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                profiles = JSON.parse(this.responseText);
+            }
+        }
+        var url = "https://greenway-benjamin.github.io/finalproject/profiles.json";
+        request.open("GET", url, true);
+        request.send();
+        
+    }
+    
+    function loadprofile() {
+        if (profileno === null) {
+            profileno = 0;
+        }
+        
+    }
+    
+    
+    
+document.getElementById('outercircle').addEventListener('animationend',function() {
+document.getElementById('outercircle').classList.remove('forward');
+document.getElementById('outercircle').classList.remove('backward');
+});
+
+function transitionForward() {
+ document.getElementById('outercircle').classList.add('forward');
+ setTimeout(function(){
+ spinner.src = "fatarrowred.png";},2500);
+}
+
+function transitionBack() {
+ document.getElementById('outercircle').classList.add('backward');
+ setTimeout(function(){
+ spinner.src = "fatarrowgreen.png";},2500);
+}
+
 document.getElementById('outercircle').style.width = getComputedStyle(document.getElementById('outercircle')).height;
 window.addEventListener('resize',function() {
 document.getElementById('outercircle').style.width = getComputedStyle(document.getElementById('outercircle')).height;
@@ -120,7 +220,7 @@ document.getElementById('testing').innerHTML = getComputedStyle(document.getElem
 pulltableft = pulltab.getBoundingClientRect().left;
 });
 function testing() {
-document.getElementById('testing').innerHTML = spinner.style.transform;
+document.getElementById('testing').innerHTML = profiles;
 }
 
 var going = 0;
