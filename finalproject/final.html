@@ -186,12 +186,19 @@ animation: transitionB 5s linear 1;
         request.send();
         
     }
-    
+    var numbers;
     function loadprofile() {
         if (profileno === null) {
             profileno = 0;
         }
-        
+        document.getElementById('lovelypictures').src = profiles[profileno].pictures;
+        spinner.src = profiles[profileno].spinnerobj;
+        numbers = profiles[profileno].degrees;
+        profiles[profilesno].audios.forEach(function(index) {
+            var newaudio = document.createElement('audio');
+            newaudio.id = profiles[profilesno].audios[index];
+            newaudio.src = profiles[profilesno].audiofiles[index];
+        });
     }
     
     
@@ -220,7 +227,7 @@ document.getElementById('testing').innerHTML = getComputedStyle(document.getElem
 pulltableft = pulltab.getBoundingClientRect().left;
 });
 function testing() {
-document.getElementById('testing').innerHTML = profiles;
+document.getElementById('testing').innerHTML = profiles.degrees[0];
 }
 
 var going = 0;
@@ -271,7 +278,7 @@ going = 0;
 }
     var rando;
     var spindeg;
-    var numbers = [24, 50, 84, 118, 146, 210, 244, 278, 306, 336];
+    
     var audios = ['goose', 'turkey', 'mouse', 'goat', 'music', 'quiz', 'cow', 'pig', 'rooster', 'sheep'];
     function spinSpinner() {
 rando = Math.floor(Math.random() * 10);
