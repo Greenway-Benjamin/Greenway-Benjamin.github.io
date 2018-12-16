@@ -144,12 +144,10 @@ animation: transitionB 5s linear 1;
 </style>
 </head>
 <body>
-<button onclick = "testing()">Testing</button>
-<div id = "testing">Testing</div>
 <div id = "thetoy">
   <div id = "outercircle">
   <div id = "pulltab">PULL ME >></div>
-   <div id = "leftbutton" onclick = "transitionBack()">LAST</div>
+   <div id = "leftbutton" onclick = "transitionBack()">PREVIOUS</div>
    <div id = "rightbutton" onclick = "transitionForward()">NEXT</div>
    <div id = "innercircle">
        <img id = "lovelypictures" src = "display1.png">
@@ -175,7 +173,7 @@ animation: transitionB 5s linear 1;
         request.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
                 profiles = JSON.parse(this.responseText);
-                loadprofile();
+                loadprofile();                
             }
         }
         var url = "https://greenway-benjamin.github.io/finalproject/profiles.json";
@@ -197,6 +195,7 @@ animation: transitionB 5s linear 1;
             newaudio.src = "audios/" + profiles[profileno].audiofiles[i];
             document.body.appendChild(newaudio);
         }
+        localStorage.setItem("profileNo", profileno);
     }
     
     
@@ -214,10 +213,8 @@ function transitionForward() {
         }
  if (profileno == profiles.length - 1) {
      profileno = 0;
-     document.getElementById('testing').innerHTML = 'max';
  } else {
      profileno++;
-     document.getElementById('testing').innerHTML = 'notmax';
  } loadprofile();
      ;},2500);
 }
@@ -230,7 +227,6 @@ function transitionBack() {
         }
      if (profileno == 0) {
          profileno = profiles.length - 1;
-         document.getElementById('testing').innerHTML = 'notmax';
      } else {
          profileno--;
      } loadprofile();
@@ -240,13 +236,8 @@ function transitionBack() {
 document.getElementById('outercircle').style.width = getComputedStyle(document.getElementById('outercircle')).height;
 window.addEventListener('resize',function() {
 document.getElementById('outercircle').style.width = getComputedStyle(document.getElementById('outercircle')).height;
-document.getElementById('testing').innerHTML = getComputedStyle(document.getElementById('outercircle')).height;
 pulltableft = pulltab.getBoundingClientRect().left;
 });
-    
-function testing() {
-document.getElementById('testing').innerHTML = profiles[profileno].pictures;
-}
 
 var going = 0;
 var spinner = document.getElementById('pointerbox');
@@ -266,7 +257,6 @@ pulltab.onmouseup = stopDrag;
 
 function dragRight(event) {
 pulltab.style.transitionDuration = '0s';
-document.getElementById('testing').innerHTML = event.clientX;
 pulltab2 = event.clientX;
 document.onmousemove = dragTab;
 document.onmouseup = stopDrag;
@@ -287,7 +277,6 @@ pulltab.style.left = pulltab.offsetLeft - pulltab1 + 'px';
 }
 
 function stopDrag() {
-document.getElementById('testing').innerHTML = 'UP';
 document.onmousemove = null;
 document.onmouseup = null;
 pulltab.style.transitionDuration = '1s';
