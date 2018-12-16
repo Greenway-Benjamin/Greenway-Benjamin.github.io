@@ -297,8 +297,7 @@ going = 0;
     var rando;
     var spindeg;
     function spinSpinner() {
-rando = numbers.length - 2;
-    //Math.floor(Math.random() * numbers.length);
+rando = Math.floor(Math.random() * numbers.length);
 spindeg = numbers[rando] + 14760;
 spinner.style.transitionDuration = '3s';
 spinner.style.transform = 'rotate(' + spindeg + 'deg)';
