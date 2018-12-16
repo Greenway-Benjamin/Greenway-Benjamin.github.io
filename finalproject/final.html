@@ -192,7 +192,7 @@ animation: transitionB 5s linear 1;
             var newaudio = document.createElement('audio');
             
             newaudio.id = profiles[profileno].audios[i];
-            newaudio.src = profiles[profileno].audiofiles[i];
+            newaudio.src = "audios/" + profiles[profileno].audiofiles[i];
             document.body.appendChild(newaudio);
         }
     }

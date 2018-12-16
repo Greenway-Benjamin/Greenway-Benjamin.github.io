@@ -7,10 +7,10 @@
     "audiofiles":["Goose.mp3","Turkey.mp3","Rat.mp3","Goat.mp3","Music.mp3","Quiz.m4a","Cow.mp3","Pig.mp3","Rooster.mp3","Sheep.wav"]
     },
     {
-    "degrees":[24,50,84,118,146,210,244,278,306,336],
+    "degrees":[0,13,26,40,53,66,80,93,106,120,133,146,160,173,186,200,213,226,240,253,266,280,293,306,320,333],
     "spinnerobj":"fatarrowgreen.png",
     "pictures":"display2.png",
-    "audios":["goose","turkey","mouse","goat","music","quiz","cow","pig","rooster","sheep"],
-    "audiofiles":["Goose.mp3","Turkey.mp3","Rat.mp3","Goat.mp3","Music.mp3","Quiz.m4a","Cow.mp3","Pig.mp3","Rooster.mp3","Sheep.wav"]
+    "audios":["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],
+    "audiofiles":["A.m4a","B.m4a","C.m4a","D.m4a","E.m4a","F.m4a","G.m4a","H.m4a","I.m4a","J.m4a","K.m4a","L.m4a","M.m4a","N.m4a","O.m4a","P.m4a","Q.m4a","R.m4a","S.m4a","T.m4a","U.m4a","V.m4a","W.m4a","X.m4a","Y.m4a","Z.m4a"]
     }
 ]
