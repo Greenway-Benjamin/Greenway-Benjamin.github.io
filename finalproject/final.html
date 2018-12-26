@@ -254,18 +254,30 @@ var pulltableft = pulltab.getBoundingClientRect().left;
 var pulltab1;
 var pulltab2;
 pulltab.onmousedown = dragRight;
-pulltab.onmouseup = stopDrag;
+pulltab.ontouchstart = dragRight;
 
 function dragRight(event) {
+    if(event.type === "touchstart") {
+        pulltab.style.transitionDuration = '0s';
+        pulltab2 = event.touches[0].clientX;
+        document.ontouchmove = dragTab;
+        document.ontouchend = stopDrag;
+    } else{
 pulltab.style.transitionDuration = '0s';
 pulltab2 = event.clientX;
 document.onmousemove = dragTab;
 document.onmouseup = stopDrag;
+    }
 }
 
 function dragTab() {
+    if(event.type === "touchmove"){
+        pulltab1 = pulltab2 - event.touches[0].clientX;
+        pulltab2 = event.touches[0].clientX;
+    } else {
 pulltab1 = pulltab2 - event.clientX;
 pulltab2 = event.clientX;
+    }
 if(pulltab.getBoundingClientRect().left > pulltableft + (pulltableft / 20)) {
     if(going == 1) {
         return;
@@ -278,6 +290,8 @@ pulltab.style.left = pulltab.offsetLeft - pulltab1 + 'px';
 }
 
 function stopDrag() {
+        document.ontouchmove = null;
+        document.ontouchend = null;
 document.onmousemove = null;
 document.onmouseup = null;
 pulltab.style.transitionDuration = '1s';
