@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <style>
+        #puzzle-container {
+            border: 1px solid black;
+            padding: 20px;
+            float: left;
+            margin: 30px 20px;
+        }
+
+        #puzzle-container div {
+            width: 100%;
+            margin: 0 auto;
+        }
+        /* style for each square in the puzzle */
+
+        #puzzle-container .puzzleSquare {
+            height: 30px;
+            width: 30px;
+            text-transform: uppercase;
+            background-color: white;
+            border: 0;
+            font: 1em sans-serif;
+        }
+
+        #puzzle-container button::-moz-focus-inner {
+            border: 0;
+        }
+        /* indicates when a square has been selected */
+
+        #puzzle-container .selected {
+            background-color: orange;
+        }
+        /* indicates that the square is part of a word that has been found */
+
+        #puzzle-container .found {
+            background-color: blue;
+            color: white;
+        }
+
+        #puzzle-container .solved {
+            background-color: purple;
+            color: white;
+        }
+        /* indicates that all words have been found */
+
+        #puzzle-container .complete {
+            background-color: green;
+        }
+        /**
+        * Styles for the word list
+        */
+
+        #puzzle-words {
+            padding-top: 20px;
+            -moz-column-count: 2;
+            -moz-column-gap: 20px;
+            -webkit-column-count: 2;
+            -webkit-column-gap: 20px;
+            column-count: 2;
+            column-gap: 20px;
+            width: 300px;
+        }
+
+        #puzzle-words ul {
+            list-style-type: none;
+        }
+
+        #puzzle-words li {
+            padding: 3px 0;
+            font: 1em sans-serif;
+        }
+        /* indicates that the word has been found */
+
+        #puzzle-words .wordFound {
+            text-decoration: line-through;
+            color: gray;
+        }
+        /**
+        * Styles for the button
+        */
+
+        #solve {
+            margin: 0 30px;
+        }
+        </style>
+
+      <script src="wordfind.js"></script>
+      <script src="wordfindgame.js"></script>
+      <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+        <meta charset="utf-8">
+        <title>Wordfind game Javascript</title>
+    </head>
+    <body>
+        <!-- Add required markup -->
+        <div id="puzzle-container"></div>
+        <div id="puzzle-words"></div>
+        <input type="button" id="solveBTN" value="Solve puzzle"/>
+
+        <!-- Add dependencies -->
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+        <script src="wordfind.js"></script>
+        <script src="wordfindgame.js"></script>
+        <!-- Add our logic -->
+        <script>
+            // An array with the words to show
+            var words = ['cows', 'tracks', 'arrived', 'located', 'sir', 'seat',
+               'division', 'effect', 'underline', 'view', 'annual',
+               'anniversary', 'centennial', 'millennium', 'perennial',
+               'artisan', 'apprentice', 'meteorologist', 'blizzard', 'tornado',
+               'intensify','speed','count','consonant','someone',
+               'sail','rolled','bear','wonder','smiled','angle', 'absent',
+               'decadent', 'excellent', 'frequent', 'impatient', 'cell',
+               'cytoplasm', 'organelle', 'diffusion', 'osmosis',
+               'respiration'
+           ];
+
+            // Start a basic word game without customization !
+            var gamePuzzle = wordfindgame.create(words, '#puzzle-container', '#puzzle-words');
+
+            $("#solveBTN").click(function(){
+                // Solve the puzzle !
+                var result = wordfindgame.solve(gamePuzzle, words);
+                console.log(result);
+            });
+        </script>
+    </body>
+</html>

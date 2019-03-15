@@ -12,7 +12,7 @@ body {
 
 header {
   width: 396px;
-  height: 219px;  
+  height: 219px;
   line-height: 219px;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
   margin-left: auto;
@@ -36,7 +36,7 @@ footer {
 ul {
   list-style-type: none;
   position: fixed;
-  top: 230px;
+  top: 1000px;
   left: 0;
   border: 1px solid;
   margin: 0;
@@ -62,4 +62,3 @@ li a:hover {
   color: white;
   background-color: green;
 }
-
